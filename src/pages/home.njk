@@ -1,0 +1,13 @@
+---
+pagination:
+  data: i18n.codes
+  size: 1
+  alias: lang
+permalink: "/{{ lang }}/"
+layout: base.njk
+---
+
+<main>
+  <h1>{{ i18n[lang].content.h1 }}</h1>
+  <p>{{ i18n[lang].content.lead }}</p>
+</main>

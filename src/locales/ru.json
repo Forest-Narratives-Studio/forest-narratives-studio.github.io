@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Forest Narratives Studio",
+    "description": "Визитка Forest Narratives Studio — сайт в разработке."
+  },
+  "content": {
+    "h1": "Сайт в разработке",
+    "lead": "Скоро здесь появится контент Forest Narratives Studio."
+  },
+  "nav": {
+    "ariaLabel": "Язык",
+    "en": "English",
+    "ru": "Русский"
+  }
+}

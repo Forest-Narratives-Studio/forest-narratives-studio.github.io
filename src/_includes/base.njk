@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ i18n[lang].meta.title }}</title>
+  <meta name="description" content="{{ i18n[lang].meta.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" hreflang="ru" href="{{ site.url }}/ru/">
+  <link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="fns-lang" aria-label="{{ i18n[lang].nav.ariaLabel }}">
+    <a
+      href="/en/"
+      hreflang="en"
+      title="{{ i18n[lang].nav.en }}"
+      aria-label="{{ i18n[lang].nav.en }}"
+      {% if lang == "en" %}aria-current="page"{% endif %}
+    >{{ i18n[lang].nav.en }}</a>
+    <span class="fns-lang-sep" aria-hidden="true">|</span>
+    <a
+      href="/ru/"
+      hreflang="ru"
+      title="{{ i18n[lang].nav.ru }}"
+      aria-label="{{ i18n[lang].nav.ru }}"
+      {% if lang == "ru" %}aria-current="page"{% endif %}
+    >{{ i18n[lang].nav.ru }}</a>
+  </nav>
+
+  {{ content | safe }}
+</body>
+</html>

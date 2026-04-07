@@ -1,0 +1,137 @@
+/**
+ * Forest Narratives Studio — визитка (тёмная тема)
+ * Базовый фон: #1a1f1a — рядом с «Чужой» #2d3d38 и нейтральным тёмным #2c2825.
+ * Остальные токены — мастер-палитра LWD (LWD_docs / графика / Палитра.md).
+ */
+
+:root {
+  /* Фон и поверхности */
+  --fns-bg: #1a1f1a;
+  /* чуть выше фона, в той же зеленовато-серой гамме */
+  --fns-surface: #242b27;
+
+  /* Текст и заголовки */
+  --fns-heading: #dce4ec;
+  --fns-heading-soft: #9ca4a8;
+  --fns-text: #b8aea0;
+  --fns-text-muted: #7a8a94;
+
+  /* Интерактив и акценты */
+  --fns-link: #7a9bb5;
+  --fns-link-hover: #d4b896;
+  --fns-accent: #c49050;
+  --fns-accent-contrast: #2c2825;
+  --fns-ui-silver: #9ca4a8;
+  --fns-border: #5c554c;
+  --fns-focus: #7a9bb5;
+  --fns-shadow: rgba(0, 0, 0, 0.35);
+
+  /* Переключатель языка */
+  --fns-lang-bg: rgba(36, 43, 39, 0.92);
+  --fns-lang-border: rgba(156, 164, 168, 0.28);
+  --fns-lang-hover: rgba(220, 228, 236, 0.08);
+  --fns-lang-separator: rgba(122, 138, 148, 0.55);
+  --fns-lang-active-bg: rgba(196, 144, 80, 0.2);
+  --fns-lang-active-ring: rgba(196, 144, 80, 0.5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fns-bg);
+  color: var(--fns-text);
+  color-scheme: dark;
+}
+
+.fns-lang {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.25rem;
+  border-radius: 0.65rem;
+  background: var(--fns-lang-bg);
+  border: 1px solid var(--fns-lang-border);
+  box-shadow: 0 2px 8px var(--fns-shadow);
+}
+
+.fns-lang a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.65rem;
+  border: none;
+  border-radius: 0.45rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.fns-lang-sep {
+  align-self: center;
+  padding: 0 0.1rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--fns-lang-separator);
+  user-select: none;
+}
+
+.fns-lang a:hover {
+  background: var(--fns-lang-hover);
+}
+
+.fns-lang a:focus-visible {
+  outline: 2px solid var(--fns-focus);
+  outline-offset: 2px;
+}
+
+.fns-lang a[aria-current="page"] {
+  background: var(--fns-lang-active-bg);
+  box-shadow: inset 0 0 0 1px var(--fns-lang-active-ring);
+  color: var(--fns-heading);
+}
+
+.fns-lang a:not([aria-current="page"]) {
+  opacity: 0.55;
+}
+
+.fns-lang a:not([aria-current="page"]):hover {
+  opacity: 0.85;
+}
+
+main {
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 28rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--fns-heading);
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--fns-text-muted);
+}

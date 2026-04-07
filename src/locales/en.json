@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Forest Narratives Studio",
+    "description": "Forest Narratives Studio — site under construction."
+  },
+  "content": {
+    "h1": "Site under construction",
+    "lead": "Forest Narratives Studio content will appear here soon."
+  },
+  "nav": {
+    "ariaLabel": "Language",
+    "en": "English",
+    "ru": "Русский"
+  }
+}
