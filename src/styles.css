@@ -1,37 +1,21 @@
-/**
- * Forest Narratives Studio — визитка (тёмная тема)
- * Базовый фон: #1a1f1a — рядом с «Чужой» #2d3d38 и нейтральным тёмным #2c2825.
- * Остальные токены — мастер-палитра LWD (LWD_docs / графика / Палитра.md).
- */
-
 :root {
-  /* Фон и поверхности */
+  --fns-font-body: "Pixelify Sans", "Trebuchet MS", "Segoe UI", sans-serif;
+  --fns-font-display: "Tiny5", ui-monospace, monospace;
+  --fns-body-letter-spacing: 0.02em;
+  --fns-body-line-height: 1.75;
   --fns-bg: #1a1f1a;
-  /* чуть выше фона, в той же зеленовато-серой гамме */
-  --fns-surface: #242b27;
-
-  /* Текст и заголовки */
   --fns-heading: #dce4ec;
   --fns-heading-soft: #9ca4a8;
   --fns-text: #b8aea0;
   --fns-text-muted: #7a8a94;
-
-  /* Интерактив и акценты */
   --fns-link: #7a9bb5;
   --fns-link-hover: #d4b896;
   --fns-accent: #c49050;
-  --fns-accent-contrast: #2c2825;
-  --fns-ui-silver: #9ca4a8;
-  --fns-border: #5c554c;
   --fns-focus: #7a9bb5;
   --fns-shadow: rgba(0, 0, 0, 0.35);
-
-  /* Пиксельная рамка: тонкий контур + ступеньки снаружи и внутри */
   --fns-pixel-border: #b88445;
   --fns-pixel-fill: rgb(74 53 34 / 80%);
   --fns-pixel-frame-w: 1px;
-  --fns-pixel-inner-border: transparent;
-  --fns-pixel-inner-gap: 0px;
   --fns-pixel-step: 3px;
   --fns-pixel-corner: calc(var(--fns-pixel-step) * 2);
   --fns-pixel-clip: polygon(
@@ -56,57 +40,19 @@
     var(--fns-pixel-step) calc(100% - var(--fns-pixel-corner)),
     0 calc(100% - var(--fns-pixel-corner))
   );
-  /* Внутренний контур: тот же «зубчатый» прямоугольник, смещённый на толщину рамки */
-  --fns-pixel-clip-inner: polygon(
-    var(--fns-pixel-frame-w) calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)) var(--fns-pixel-frame-w),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)) var(--fns-pixel-frame-w),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
-    calc(100% - var(--fns-pixel-frame-w))
-      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
-    calc(100% - var(--fns-pixel-frame-w))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
-    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)) calc(100% - var(--fns-pixel-frame-w)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)) calc(100% - var(--fns-pixel-frame-w)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
-    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
-      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)),
-    var(--fns-pixel-frame-w) calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner))
-  );
-
-  /* Переключатель языка */
-  --fns-lang-hover: rgba(220, 228, 236, 0.08);
   --fns-lang-separator: rgba(122, 138, 148, 0.55);
   --fns-lang-active: #c49050;
-
-  /* Wordmark: яркая строка и «серый» в той же гамме, близко к основной */
   --fns-wordmark-main: #f4c870;
   --fns-wordmark-muted: color-mix(in srgb, var(--fns-wordmark-main) 52%, var(--fns-heading-soft) 48%);
-
-  /* Фон: тайловые sky_*.webp (список в base.njk), натуральный тайл 512×512; отображение ×2 */
   --fns-bg-sky-tile: 512px;
-  /* за «1» по скорости — один полный тайл за этот интервал (см. sky-drift в base.njk) */
   --fns-bg-sky-drift: 120s;
+  --fns-panel-width: 39rem;
+}
+
+html:lang(ru) {
+  --fns-font-body: "Handjet", "Trebuchet MS", "Segoe UI", sans-serif;
+  --fns-body-letter-spacing: 0.02em;
+  --fns-body-line-height: 1.68;
 }
 
 *,
@@ -115,18 +61,19 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--fns-font-body);
   background-color: var(--fns-bg);
-  background-image: var(
-    --fns-bg-sky-image,
-    url("/assets/backgrounds/sky_01.webp")
-  );
+  background-image: var(--fns-bg-sky-image, url("/assets/backgrounds/sky_01.webp"));
   background-repeat: repeat;
   background-size: calc(var(--fns-bg-sky-tile) * 2);
   background-position: var(--fns-bg-sky-pos-x, 0px) var(--fns-bg-sky-pos-y, 0px);
@@ -134,10 +81,22 @@ body {
   color-scheme: dark;
 }
 
-/* Пиксельная рамка: внешний слой — контур; заливка с внутренними «ступеньками» */
+a {
+  color: inherit;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(var(--fns-panel-width), calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
 .fns-pixel-frame {
-  position: relative;
   display: inline-block;
+  width: 100%;
   max-width: 100%;
   border: var(--fns-pixel-frame-w) solid var(--fns-pixel-border);
   background-color: var(--fns-pixel-fill);
@@ -146,24 +105,13 @@ body {
   filter: drop-shadow(0 2px 10px var(--fns-shadow));
 }
 
-.fns-pixel-frame::before {
-  content: "";
-  position: absolute;
-  inset: calc(var(--fns-pixel-frame-w) + var(--fns-pixel-inner-gap));
-  border: 0;
-  clip-path: var(--fns-pixel-clip);
-  -webkit-clip-path: var(--fns-pixel-clip);
-  pointer-events: none;
-}
-
 .fns-pixel-frame__inner {
-  box-sizing: border-box;
   position: relative;
   z-index: 1;
 }
 
 .fns-pixel-frame--hero .fns-pixel-frame__inner {
-  padding: 1.35rem 1.5rem 1.5rem;
+  padding: 1.35rem 1.2rem 1.5rem;
   text-align: left;
 }
 
@@ -179,38 +127,29 @@ body {
   gap: 0.35rem;
   margin: 0;
   padding: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
 }
 
 .fns-lang a {
   padding: 0.15rem 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
   color: var(--fns-heading);
-  font-family: "Tiny5", ui-monospace, monospace;
+  font-family: var(--fns-font-display);
   font-size: 1rem;
-  font-weight: 400;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
   text-decoration: none;
-  cursor: pointer;
+  text-transform: uppercase;
   transition: opacity 0.15s ease;
 }
 
 .fns-lang-sep {
-  font-family: "Tiny5", ui-monospace, monospace;
-  font-size: 1rem;
-  font-weight: 400;
   color: var(--fns-lang-separator);
+  font-family: var(--fns-font-display);
+  font-size: 1rem;
   user-select: none;
 }
 
-.fns-lang a:focus-visible {
+.fns-lang a:focus-visible,
+.fns-adventure__choices a:focus-visible,
+.fns-landing__language-card:focus-visible {
   outline: 2px solid var(--fns-focus);
   outline-offset: 3px;
 }
@@ -228,53 +167,31 @@ body {
   opacity: 0.75;
 }
 
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  /* Шире, чтобы пиксельный wordmark с трекингом не ломался о 28rem */
-  max-width: min(42rem, 100%);
-  width: 100%;
-}
-
-.fns-pixel-frame--hero {
-  width: max-content;
-  max-width: 100%;
-}
-
 .fns-wordmark {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
   margin: 0 0 1.35rem;
+  font-family: var(--fns-font-display);
   line-height: 1;
-  font-family: "Tiny5", ui-monospace, monospace;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .fns-wordmark__muted {
   margin: 0;
-  font-size: clamp(1rem, 3.2vw, 1.35rem);
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: lowercase;
   color: var(--fns-wordmark-muted);
+  font-size: clamp(1rem, 3.2vw, 1.35rem);
+  letter-spacing: 0.14em;
   line-height: 1;
+  text-transform: lowercase;
 }
 
-/* Верхняя строка "студия" центрируется относительно всего блока */
-.fns-wordmark__muted:first-child {
+.fns-wordmark__muted:first-child,
+.fns-wordmark__main + .fns-wordmark__muted,
+.fns-wordmark__main {
   align-self: center;
 }
 
-.fns-wordmark__main + .fns-wordmark__muted {
-  align-self: center;
-}
-
-/* Серый визуально «наползает» на яркую строку */
 .fns-wordmark__muted + .fns-wordmark__main {
   margin-top: -0.22em;
 }
@@ -285,48 +202,39 @@ main {
 
 .fns-wordmark__main {
   margin: 0;
+  color: var(--fns-wordmark-main);
+  font-family: var(--fns-font-display);
   font-size: clamp(2.125rem, 7.5vw, 3rem);
   font-weight: 400;
   letter-spacing: 0.06em;
   line-height: 1.05;
-  color: var(--fns-wordmark-main);
   text-wrap: balance;
-  align-self: center;
-}
-
-h1 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0 0 0.75rem;
-  color: var(--fns-heading);
 }
 
 p {
   margin: 0;
-  line-height: 1.5;
-  color: var(--fns-text-muted);
+  line-height: 1.6;
 }
 
 .fns-adventure {
-  max-width: 54ch;
+  width: 100%;
+  max-width: none;
 }
 
 .fns-adventure p {
-  margin: 0 0 0.9rem;
+  margin-bottom: 0.9rem;
   color: var(--fns-text);
-  font-family: "Tiny5", ui-monospace, monospace;
-  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-  line-height: 1.35;
-  letter-spacing: 0.02em;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: justify;
-  text-justify: inter-word;
+  font-family: var(--fns-font-body);
+  font-size: clamp(1rem, 2.2vw, 1.08rem);
+  letter-spacing: var(--fns-body-letter-spacing);
+  line-height: var(--fns-body-line-height);
+  text-wrap: pretty;
 }
 
 .fns-adventure__question {
   margin-top: 0.35rem;
   color: var(--fns-heading);
+  font-weight: 600;
 }
 
 .fns-adventure__choices {
@@ -336,7 +244,7 @@ p {
 }
 
 .fns-adventure__choices li {
-  margin: 0 0 0.55rem;
+  margin-bottom: 0.7rem;
 }
 
 .fns-adventure__choices li::before {
@@ -346,11 +254,10 @@ p {
 
 .fns-adventure__choices a {
   color: var(--fns-link);
-  font-family: "Tiny5", ui-monospace, monospace;
-  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
-  letter-spacing: 0.02em;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--fns-font-body);
+  font-size: clamp(1rem, 2.2vw, 1.08rem);
+  font-weight: 600;
+  letter-spacing: var(--fns-body-letter-spacing);
   text-decoration: none;
   border-bottom: 1px dashed color-mix(in srgb, var(--fns-link) 65%, transparent);
 }
@@ -366,21 +273,145 @@ p {
   border-bottom-color: var(--fns-link-hover);
 }
 
-.fns-adventure__choices a:active {
+.fns-adventure__choices a:active,
+.fns-landing__language-card:active {
   color: var(--fns-accent);
-  border-bottom-color: var(--fns-accent);
-}
-
-.fns-adventure__choices a:focus-visible {
-  outline: 2px solid var(--fns-focus);
-  outline-offset: 3px;
 }
 
 .fns-copyright {
-  margin-top: 0.9rem;
-  font-family: "Tiny5", ui-monospace, monospace;
+  margin-top: 1rem;
+  color: var(--fns-text-muted);
+  font-family: var(--fns-font-display);
   font-size: 0.95rem;
   letter-spacing: 0.04em;
-  color: var(--fns-text-muted);
   text-align: center;
+}
+
+.fns-landing .fns-pixel-frame__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fns-landing--compact {
+  width: min(24rem, calc(100% - 2rem));
+}
+
+.fns-landing--compact .fns-pixel-frame__inner {
+  padding: 1.25rem 1.1rem 1.35rem;
+}
+
+.fns-landing--compact .fns-landing__languages {
+  margin-top: 0;
+}
+
+.fns-landing--compact .fns-landing__language-card {
+  justify-content: center;
+  min-height: 4rem;
+}
+
+.fns-landing__eyebrow {
+  margin-bottom: 0.9rem;
+  color: var(--fns-heading-soft);
+  font-family: var(--fns-font-display);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fns-landing__title {
+  margin: 0 0 1rem;
+  color: var(--fns-wordmark-main);
+  font-family: var(--fns-font-display);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.fns-landing__lead {
+  max-width: 38ch;
+  margin-bottom: 0.75rem;
+  color: var(--fns-text);
+  font-family: var(--fns-font-body);
+  font-size: clamp(1rem, 2.3vw, 1.08rem);
+  letter-spacing: var(--fns-body-letter-spacing);
+  line-height: var(--fns-body-line-height);
+  text-wrap: pretty;
+}
+
+.fns-landing__languages {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.fns-landing__language-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--fns-pixel-border) 60%, transparent);
+  background: rgb(26 31 26 / 22%);
+  color: var(--fns-heading);
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.fns-landing__language-card:hover,
+.fns-landing__language-card:focus-visible {
+  border-color: var(--fns-link-hover);
+  background: rgb(26 31 26 / 32%);
+  color: var(--fns-link-hover);
+  transform: translateY(-1px);
+}
+
+.fns-landing__language-name {
+  font-family: var(--fns-font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fns-landing__language-copy {
+  color: var(--fns-text);
+  font-family: var(--fns-font-body);
+  font-size: 0.98rem;
+  letter-spacing: var(--fns-body-letter-spacing);
+  line-height: 1.6;
+}
+
+@media (min-width: 36rem) {
+  .fns-landing__languages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  body {
+    display: block;
+  }
+
+  .fns-lang {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  main {
+    width: min(var(--fns-panel-width), calc(100% - 1rem));
+    padding: 4rem 0 1rem;
+  }
+
+  .fns-landing--compact {
+    width: min(24rem, calc(100% - 1rem));
+  }
+
+  .fns-pixel-frame--hero .fns-pixel-frame__inner {
+    padding: 1.15rem 1.1rem 1.25rem;
+  }
 }

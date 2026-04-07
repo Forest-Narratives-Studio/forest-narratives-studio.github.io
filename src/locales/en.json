@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Forest Narratives Studio",
-    "description": "Forest Narratives Studio. Interactive stories and visual novels."
+    "description": "Forest Narratives Studio. Interactive stories and visual novels.",
+    "locale": "en_US"
   },
   "wordmark": {
     "grayTop": "",

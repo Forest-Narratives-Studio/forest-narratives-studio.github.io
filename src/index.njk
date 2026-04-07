@@ -1,16 +1,40 @@
 ---
 permalink: /
-layout: false
+layout: base.njk
 eleventyExcludeFromCollections: true
+pageLang: en
+pageLocale: en_US
+pageTitle: Forest Narratives Studio
+pageDescription: Independent game studio creating interactive stories and visual novels.
+canonicalPath: /
+xDefaultPath: /
+showLanguageNav: false
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forest Narratives Studio</title>
-  <script>(function(){var l=navigator.languages||[navigator.language||"en"];for(var i=0;i<l.length;i++){if(String(l[i]).toLowerCase().startsWith("ru")){location.replace("/ru/");return;}}location.replace("/en/");})();</script>
-  <noscript><meta http-equiv="refresh" content="0;url=/en/"></noscript>
-</head>
-<body></body>
-</html>
+<script>
+  (function () {
+    var languages = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < languages.length; i += 1) {
+      if (String(languages[i]).toLowerCase().startsWith("ru")) {
+        window.location.replace("/ru/");
+        return;
+      }
+    }
+    window.location.replace("/en/");
+  })();
+</script>
+
+<main class="fns-landing fns-landing--compact">
+  <div class="fns-pixel-frame fns-pixel-frame--hero">
+    <div class="fns-pixel-frame__inner">
+      <nav class="fns-landing__languages" aria-label="Choose language">
+        <a class="fns-landing__language-card" href="/en/" hreflang="en" lang="en">
+          <span class="fns-landing__language-name">English</span>
+        </a>
+        <a class="fns-landing__language-card" href="/ru/" hreflang="ru" lang="ru">
+          <span class="fns-landing__language-name">Русский</span>
+        </a>
+      </nav>
+      <p class="fns-copyright">(c) 2023–2026</p>
+    </div>
+  </div>
+</main>

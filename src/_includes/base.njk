@@ -1,18 +1,53 @@
+{% set currentLang = pageLang or lang or "en" %}
+{% set currentMeta = i18n[currentLang].meta %}
+{% set metaTitle = pageTitle or currentMeta.title %}
+{% set metaDescription = pageDescription or currentMeta.description %}
+{% set metaLocale = pageLocale or currentMeta.locale %}
+{% set canonicalUrl = site.url ~ (canonicalPath or page.url) %}
+{% set xDefaultUrl = site.url ~ (xDefaultPath or "/") %}
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="{{ currentLang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ i18n[lang].meta.title }}</title>
-  <meta name="description" content="{{ i18n[lang].meta.description }}">
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <title>{{ metaTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#1a1f1a">
+  <link rel="canonical" href="{{ canonicalUrl }}">
   <link rel="alternate" hreflang="ru" href="{{ site.url }}/ru/">
   <link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+  <link rel="alternate" hreflang="x-default" href="{{ xDefaultUrl }}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ metaTitle }}">
+  <meta property="og:description" content="{{ metaDescription }}">
+  <meta property="og:url" content="{{ canonicalUrl }}">
+  <meta property="og:locale" content="{{ metaLocale }}">
+  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ metaTitle }}">
+  <meta name="twitter:description" content="{{ metaDescription }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@400;500;600&family=Pixelify+Sans:wght@400;500;600&family=Tiny5&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}",
+      "description": "{{ metaDescription }}",
+      "sameAs": [
+        "{{ site.social.vk }}",
+        "{{ site.social.telegram }}",
+        "{{ site.social.max }}"
+      ]
+    }
+  </script>
   <script>
     (function () {
       var SKIES = [
@@ -35,6 +70,7 @@
   </script>
 </head>
 <body>
+  {% if showLanguageNav != false %}
   <nav class="fns-lang" aria-label="{{ i18n[lang].nav.ariaLabel }}">
     <a
       href="/en/"
@@ -52,6 +88,7 @@
       {% if lang == "ru" %}aria-current="page"{% endif %}
     >{{ i18n[lang].nav.ru }}</a>
   </nav>
+  {% endif %}
 
   {{ content | safe }}
   <script>
