@@ -13,9 +13,9 @@
   "adventure": {
     "ariaLabel": "Text block with action choices",
     "paragraphs": [
-      "While traversing the information and telecommunication network known as the “Internet,” you discovered the page of the independent game studio “Forest Narratives”.",
+      "While traversing the information-and-telecommunications network that bears the conventional designation “Internet,” you discovered the page of the independent game studio “Forest Narratives.”",
       "The name feels vaguely familiar: perhaps you have already played the text horror quest “Strange House,” available in RuStore for Android devices.",
-      "At this very moment, the studio is extremely busy - it is working on the visual novel “The Last Warm Day.”"
+      "At this very moment, the studio is extremely busy—it is working on the visual novel “The Last Warm Day.”"
     ],
     "question": "What will your next actions be?",
     "choices": [
