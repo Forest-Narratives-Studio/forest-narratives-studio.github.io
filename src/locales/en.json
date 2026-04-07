@@ -6,9 +6,9 @@
   },
   "wordmark": {
     "grayTop": "",
-    "main": "Forest narratives",
+    "main": "Forest Narratives",
     "grayBottom": "studio",
-    "ariaLabel": "Forest narratives studio"
+    "ariaLabel": "Forest Narratives Studio"
   },
   "adventure": {
     "ariaLabel": "Text block with action choices",
