@@ -26,13 +26,79 @@
   --fns-focus: #7a9bb5;
   --fns-shadow: rgba(0, 0, 0, 0.35);
 
+  /* Пиксельная рамка: тонкий контур + ступеньки снаружи и внутри */
+  --fns-pixel-border: #b88445;
+  --fns-pixel-fill: rgb(74 53 34 / 80%);
+  --fns-pixel-frame-w: 1px;
+  --fns-pixel-inner-border: transparent;
+  --fns-pixel-inner-gap: 0px;
+  --fns-pixel-step: 3px;
+  --fns-pixel-corner: calc(var(--fns-pixel-step) * 2);
+  --fns-pixel-clip: polygon(
+    0 var(--fns-pixel-corner),
+    var(--fns-pixel-step) var(--fns-pixel-corner),
+    var(--fns-pixel-step) var(--fns-pixel-step),
+    var(--fns-pixel-corner) var(--fns-pixel-step),
+    var(--fns-pixel-corner) 0,
+    calc(100% - var(--fns-pixel-corner)) 0,
+    calc(100% - var(--fns-pixel-corner)) var(--fns-pixel-step),
+    calc(100% - var(--fns-pixel-step)) var(--fns-pixel-step),
+    calc(100% - var(--fns-pixel-step)) var(--fns-pixel-corner),
+    100% var(--fns-pixel-corner),
+    100% calc(100% - var(--fns-pixel-corner)),
+    calc(100% - var(--fns-pixel-step)) calc(100% - var(--fns-pixel-corner)),
+    calc(100% - var(--fns-pixel-step)) calc(100% - var(--fns-pixel-step)),
+    calc(100% - var(--fns-pixel-corner)) calc(100% - var(--fns-pixel-step)),
+    calc(100% - var(--fns-pixel-corner)) 100%,
+    var(--fns-pixel-corner) 100%,
+    var(--fns-pixel-corner) calc(100% - var(--fns-pixel-step)),
+    var(--fns-pixel-step) calc(100% - var(--fns-pixel-step)),
+    var(--fns-pixel-step) calc(100% - var(--fns-pixel-corner)),
+    0 calc(100% - var(--fns-pixel-corner))
+  );
+  /* Внутренний контур: тот же «зубчатый» прямоугольник, смещённый на толщину рамки */
+  --fns-pixel-clip-inner: polygon(
+    var(--fns-pixel-frame-w) calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)) var(--fns-pixel-frame-w),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)) var(--fns-pixel-frame-w),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step)),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
+    calc(100% - var(--fns-pixel-frame-w))
+      calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)),
+    calc(100% - var(--fns-pixel-frame-w))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
+    calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)) calc(100% - var(--fns-pixel-frame-w)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner)) calc(100% - var(--fns-pixel-frame-w)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-corner))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-step)),
+    calc(var(--fns-pixel-frame-w) + var(--fns-pixel-step))
+      calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner)),
+    var(--fns-pixel-frame-w) calc(100% - var(--fns-pixel-frame-w) - var(--fns-pixel-corner))
+  );
+
   /* Переключатель языка */
-  --fns-lang-bg: rgba(36, 43, 39, 0.92);
-  --fns-lang-border: rgba(156, 164, 168, 0.28);
   --fns-lang-hover: rgba(220, 228, 236, 0.08);
   --fns-lang-separator: rgba(122, 138, 148, 0.55);
-  --fns-lang-active-bg: rgba(196, 144, 80, 0.2);
-  --fns-lang-active-ring: rgba(196, 144, 80, 0.5);
+  --fns-lang-active-en: #c49050;
+  --fns-lang-active-ru: #c49050;
 
   /* Wordmark: яркая строка и «серый» в той же гамме, близко к основной */
   --fns-wordmark-main: #f4c870;
@@ -69,76 +135,120 @@ body {
   color-scheme: dark;
 }
 
+/* Пиксельная рамка: внешний слой — контур; заливка с внутренними «ступеньками» */
+.fns-pixel-frame {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  border: var(--fns-pixel-frame-w) solid var(--fns-pixel-border);
+  background-color: var(--fns-pixel-fill);
+  clip-path: var(--fns-pixel-clip);
+  -webkit-clip-path: var(--fns-pixel-clip);
+  filter: drop-shadow(0 2px 10px var(--fns-shadow));
+}
+
+.fns-pixel-frame::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--fns-pixel-frame-w) + var(--fns-pixel-inner-gap));
+  border: 0;
+  clip-path: var(--fns-pixel-clip);
+  -webkit-clip-path: var(--fns-pixel-clip);
+  pointer-events: none;
+}
+
+.fns-pixel-frame__inner {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.fns-pixel-frame--hero .fns-pixel-frame__inner {
+  padding: 1.35rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
 .fns-lang {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  z-index: 2;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
   gap: 0.35rem;
-  padding: 0.25rem;
-  border-radius: 0.65rem;
-  background: var(--fns-lang-bg);
-  border: 1px solid var(--fns-lang-border);
-  box-shadow: 0 2px 8px var(--fns-shadow);
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .fns-lang a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.25rem;
-  padding: 0.35rem 0.65rem;
+  padding: 0.15rem 0;
   border: none;
-  border-radius: 0.45rem;
+  border-radius: 0;
   background: transparent;
-  color: inherit;
-  font: inherit;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  color: var(--fns-heading);
+  font-family: "Tiny5", ui-monospace, monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  transition: opacity 0.15s ease;
 }
 
 .fns-lang-sep {
-  align-self: center;
-  padding: 0 0.1rem;
-  font-size: 0.875rem;
+  font-family: "Tiny5", ui-monospace, monospace;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--fns-lang-separator);
   user-select: none;
 }
 
-.fns-lang a:hover {
-  background: var(--fns-lang-hover);
-}
-
 .fns-lang a:focus-visible {
   outline: 2px solid var(--fns-focus);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .fns-lang a[aria-current="page"] {
-  background: var(--fns-lang-active-bg);
-  box-shadow: inset 0 0 0 1px var(--fns-lang-active-ring);
-  color: var(--fns-heading);
+  opacity: 1;
+}
+
+.fns-lang a[aria-current="page"][hreflang="en"] {
+  color: var(--fns-lang-active-en);
+}
+
+.fns-lang a[aria-current="page"][hreflang="ru"] {
+  color: var(--fns-lang-active-ru);
 }
 
 .fns-lang a:not([aria-current="page"]) {
-  opacity: 0.55;
+  opacity: 0.42;
 }
 
 .fns-lang a:not([aria-current="page"]):hover {
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 main {
-  text-align: center;
-  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
   /* Шире, чтобы пиксельный wordmark с трекингом не ломался о 28rem */
   max-width: min(42rem, 100%);
   width: 100%;
+}
+
+.fns-pixel-frame--hero {
+  width: max-content;
+  max-width: 100%;
 }
 
 .fns-wordmark {
@@ -205,6 +315,14 @@ p {
   margin: 0;
 }
 
+.fns-copyright {
+  margin-top: 0.9rem;
+  font-family: "Tiny5", ui-monospace, monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--fns-text-muted);
+}
+
 .fns-social__link {
   display: flex;
   align-items: center;
@@ -215,20 +333,16 @@ p {
   border-radius: 0.5rem;
   line-height: 0;
   text-decoration: none;
-  transition: filter 0.2s ease, opacity 0.2s ease, background 0.15s ease;
-  filter: grayscale(1) brightness(0.92) opacity(0.5);
+  transition: background 0.15s ease;
 }
 
 .fns-social__link:hover,
 .fns-social__link:focus-visible {
-  filter: none;
-  opacity: 1;
   background: var(--fns-lang-hover);
 }
 
 .fns-social__link:active {
-  filter: none;
-  opacity: 1;
+  background: var(--fns-lang-hover);
 }
 
 .fns-social__icon {
@@ -236,6 +350,17 @@ p {
   width: 2rem;
   height: 2rem;
   object-fit: contain;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+  /* Единый приглушённый стиль для всех брендов в неактивном состоянии */
+  filter: grayscale(1) saturate(0) brightness(0.9) contrast(0.95);
+  opacity: 0.5;
+}
+
+.fns-social__link:hover .fns-social__icon,
+.fns-social__link:focus-visible .fns-social__icon,
+.fns-social__link:active .fns-social__icon {
+  filter: none;
+  opacity: 1;
 }
 
 .fns-social__link:focus-visible {

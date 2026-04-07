@@ -12,7 +12,8 @@
   "social": {
     "ariaLabel": "Social and messengers",
     "vk": { "label": "VK — Forest Narratives Studio" },
-    "telegram": { "label": "Telegram — Forest Narratives Studio" }
+    "telegram": { "label": "Telegram — Forest Narratives Studio" },
+    "max": { "label": "MAX — Forest Narratives Studio" }
   },
   "nav": {
     "ariaLabel": "Language",

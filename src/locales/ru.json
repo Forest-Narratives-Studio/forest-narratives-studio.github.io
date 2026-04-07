@@ -12,7 +12,8 @@
   "social": {
     "ariaLabel": "Соцсети и мессенджеры",
     "vk": { "label": "ВКонтакте — Forest Narratives Studio" },
-    "telegram": { "label": "Telegram — Сказы из пущи" }
+    "telegram": { "label": "Telegram — Сказы из пущи" },
+    "max": { "label": "MAX — Сказы из пущи" }
   },
   "nav": {
     "ariaLabel": "Язык",
