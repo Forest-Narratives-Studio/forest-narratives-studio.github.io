@@ -19,38 +19,19 @@ layout: base.njk
         <p class="fns-wordmark__muted">{{ i18n[lang].wordmark.grayBottom }}</p>
         {% endif %}
       </div>
-      <nav class="fns-social" aria-label="{{ i18n[lang].social.ariaLabel }}">
-        <a
-          class="fns-social__link"
-          href="https://vk.com/forestnarrativesstudio"
-          rel="noopener noreferrer"
-          target="_blank"
-          title="{{ i18n[lang].social.vk.label }}"
-          aria-label="{{ i18n[lang].social.vk.label }}"
-        >
-          <img class="fns-social__icon" src="/assets/icons/vk.svg" width="40" height="40" alt="" />
-        </a>
-        <a
-          class="fns-social__link"
-          href="https://t.me/forestnarrativesstudio"
-          rel="noopener noreferrer"
-          target="_blank"
-          title="{{ i18n[lang].social.telegram.label }}"
-          aria-label="{{ i18n[lang].social.telegram.label }}"
-        >
-          <img class="fns-social__icon" src="/assets/icons/telegram.svg" width="40" height="40" alt="" />
-        </a>
-        <a
-          class="fns-social__link"
-          href="https://max.ru/join/YQzEQSTrjVDh0yNAw5lNeJrT2PIjKEwnPiTQJtTaCIM"
-          rel="noopener noreferrer"
-          target="_blank"
-          title="{{ i18n[lang].social.max.label }}"
-          aria-label="{{ i18n[lang].social.max.label }}"
-        >
-          <img class="fns-social__icon" src="/assets/icons/max.svg" width="40" height="40" alt="" />
-        </a>
-      </nav>
+      <section class="fns-adventure" aria-label="{{ i18n[lang].adventure.ariaLabel }}">
+        {% for paragraph in i18n[lang].adventure.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        <p class="fns-adventure__question">{{ i18n[lang].adventure.question }}</p>
+        <ul class="fns-adventure__choices">
+          {% for choice in i18n[lang].adventure.choices %}
+          <li>
+            <a href="{{ choice.href }}" rel="noopener noreferrer" target="_blank">{{ choice.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
       <p class="fns-copyright">(c) 2023–2026</p>
     </div>
   </div>

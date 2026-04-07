@@ -2,21 +2,11 @@
 
 Статический сайт на [Eleventy](https://www.11ty.dev/): исходники в `src/`, сборка в `_site/` (`npm run build`).
 
-## Публикация (GitHub Pages)
-
-1. **Settings → Pages → Build and deployment**.
-2. **Source**: **GitHub Actions** (не ветка).
-3. После push в `main` workflow [.github/workflows/pages.yml](.github/workflows/pages.yml) выполняет `npm ci`, `npm run build` и публикует `_site/`.
-
-## Локально
-
 ```bash
 npm ci
 npm run build
 npm run dev
 ```
-
-Канонический URL (`url`) для sitemap и canonical: [src/_data/site.js](src/_data/site.js).
 
 ## Ссылки
 

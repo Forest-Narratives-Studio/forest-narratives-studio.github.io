@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Forest Narratives Studio",
-    "description": "Forest Narratives Studio — интерактивные истории и сказы из пущи."
+    "title": "Студия «Сказы из пущи»",
+    "description": "Независимая игровая студия «Сказы из пущи». Интерактивные истории и визуальные новеллы."
   },
   "wordmark": {
     "grayTop": "студия",
@@ -9,11 +9,32 @@
     "grayBottom": "",
     "ariaLabel": "Сказы из пущи, студия"
   },
-  "social": {
-    "ariaLabel": "Соцсети и мессенджеры",
-    "vk": { "label": "ВКонтакте — Forest Narratives Studio" },
-    "telegram": { "label": "Telegram — Сказы из пущи" },
-    "max": { "label": "MAX — Сказы из пущи" }
+  "adventure": {
+    "ariaLabel": "Текстовый блок с выбором действий",
+    "paragraphs": [
+      "Странствуя по информационно-телекоммуникационной сети «Интернет», вы обнаружили страницу независимой игровой студии «Сказы из пущи».",
+      "Название кажется вам смутно знакомым: возможно, вы уже играли в текстовый хоррор-квест «Чужой дом», доступный в RuStore для устройств на Android.",
+      "Прямо сейчас студия очень занята — она работает над визуальной новеллой «Последний тёплый день»."
+    ],
+    "question": "Каковы будут ваши дальнейшие действия?",
+    "choices": [
+      {
+        "label": "Скачать «Чужой дом» из RuStore",
+        "href": "https://www.rustore.ru/catalog/app/com.forestnarrationsstudio.house"
+      },
+      {
+        "label": "Зайти в сообщество во ВКонтакте",
+        "href": "https://vk.com/forestnarrativesstudio"
+      },
+      {
+        "label": "Открыть Telegram-канал",
+        "href": "https://t.me/forestnarrativesstudio"
+      },
+      {
+        "label": "Осмотреть канал в Max",
+        "href": "https://max.ru/join/YQzEQSTrjVDh0yNAw5lNeJrT2PIjKEwnPiTQJtTaCIM"
+      }
+    ]
   },
   "nav": {
     "ariaLabel": "Язык",

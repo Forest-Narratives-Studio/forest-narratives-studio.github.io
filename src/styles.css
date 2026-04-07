@@ -97,8 +97,7 @@
   /* Переключатель языка */
   --fns-lang-hover: rgba(220, 228, 236, 0.08);
   --fns-lang-separator: rgba(122, 138, 148, 0.55);
-  --fns-lang-active-en: #c49050;
-  --fns-lang-active-ru: #c49050;
+  --fns-lang-active: #c49050;
 
   /* Wordmark: яркая строка и «серый» в той же гамме, близко к основной */
   --fns-wordmark-main: #f4c870;
@@ -165,7 +164,7 @@ body {
 
 .fns-pixel-frame--hero .fns-pixel-frame__inner {
   padding: 1.35rem 1.5rem 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .fns-lang {
@@ -218,14 +217,7 @@ body {
 
 .fns-lang a[aria-current="page"] {
   opacity: 1;
-}
-
-.fns-lang a[aria-current="page"][hreflang="en"] {
-  color: var(--fns-lang-active-en);
-}
-
-.fns-lang a[aria-current="page"][hreflang="ru"] {
-  color: var(--fns-lang-active-ru);
+  color: var(--fns-lang-active);
 }
 
 .fns-lang a:not([aria-current="page"]) {
@@ -254,7 +246,7 @@ main {
 .fns-wordmark {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0;
   margin: 0 0 1.35rem;
   line-height: 1;
@@ -271,6 +263,15 @@ main {
   text-transform: lowercase;
   color: var(--fns-wordmark-muted);
   line-height: 1;
+}
+
+/* Верхняя строка "студия" центрируется относительно всего блока */
+.fns-wordmark__muted:first-child {
+  align-self: center;
+}
+
+.fns-wordmark__main + .fns-wordmark__muted {
+  align-self: center;
 }
 
 /* Серый визуально «наползает» на яркую строку */
@@ -290,6 +291,7 @@ main {
   line-height: 1.05;
   color: var(--fns-wordmark-main);
   text-wrap: balance;
+  align-self: center;
 }
 
 h1 {
@@ -305,14 +307,73 @@ p {
   color: var(--fns-text-muted);
 }
 
-/* Соцсети: одна визуальная геометрия, брендовые цвета в SVG; в покое — приглушение через фильтр */
-.fns-social {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
+.fns-adventure {
+  max-width: 54ch;
+}
+
+.fns-adventure p {
+  margin: 0 0 0.9rem;
+  color: var(--fns-text);
+  font-family: "Tiny5", ui-monospace, monospace;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.fns-adventure__question {
+  margin-top: 0.35rem;
+  color: var(--fns-heading);
+}
+
+.fns-adventure__choices {
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fns-adventure__choices li {
+  margin: 0 0 0.55rem;
+}
+
+.fns-adventure__choices li::before {
+  content: "* ";
+  color: var(--fns-wordmark-main);
+}
+
+.fns-adventure__choices a {
+  color: var(--fns-link);
+  font-family: "Tiny5", ui-monospace, monospace;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--fns-link) 65%, transparent);
+}
+
+.fns-adventure__choices a:visited {
+  color: var(--fns-link);
+  border-bottom-color: color-mix(in srgb, var(--fns-link) 65%, transparent);
+}
+
+.fns-adventure__choices a:hover,
+.fns-adventure__choices a:focus-visible {
+  color: var(--fns-link-hover);
+  border-bottom-color: var(--fns-link-hover);
+}
+
+.fns-adventure__choices a:active {
+  color: var(--fns-accent);
+  border-bottom-color: var(--fns-accent);
+}
+
+.fns-adventure__choices a:focus-visible {
+  outline: 2px solid var(--fns-focus);
+  outline-offset: 3px;
 }
 
 .fns-copyright {
@@ -321,49 +382,5 @@ p {
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   color: var(--fns-text-muted);
-}
-
-.fns-social__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: 0.35rem;
-  border-radius: 0.5rem;
-  line-height: 0;
-  text-decoration: none;
-  transition: background 0.15s ease;
-}
-
-.fns-social__link:hover,
-.fns-social__link:focus-visible {
-  background: var(--fns-lang-hover);
-}
-
-.fns-social__link:active {
-  background: var(--fns-lang-hover);
-}
-
-.fns-social__icon {
-  display: block;
-  width: 2rem;
-  height: 2rem;
-  object-fit: contain;
-  transition: filter 0.2s ease, opacity 0.2s ease;
-  /* Единый приглушённый стиль для всех брендов в неактивном состоянии */
-  filter: grayscale(1) saturate(0) brightness(0.9) contrast(0.95);
-  opacity: 0.5;
-}
-
-.fns-social__link:hover .fns-social__icon,
-.fns-social__link:focus-visible .fns-social__icon,
-.fns-social__link:active .fns-social__icon {
-  filter: none;
-  opacity: 1;
-}
-
-.fns-social__link:focus-visible {
-  outline: 2px solid var(--fns-focus);
-  outline-offset: 2px;
+  text-align: center;
 }
