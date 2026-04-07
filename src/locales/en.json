@@ -1,11 +1,18 @@
 {
   "meta": {
     "title": "Forest Narratives Studio",
-    "description": "Forest Narratives Studio — site under construction."
+    "description": "Forest Narratives Studio — interactive stories from the deep woods."
   },
-  "content": {
-    "h1": "Site under construction",
-    "lead": "Forest Narratives Studio content will appear here soon."
+  "wordmark": {
+    "grayTop": "",
+    "main": "Forest narratives",
+    "grayBottom": "studio",
+    "ariaLabel": "Forest narratives studio"
+  },
+  "social": {
+    "ariaLabel": "Social and messengers",
+    "vk": { "label": "VK — Forest Narratives Studio" },
+    "telegram": { "label": "Telegram — Forest Narratives Studio" }
   },
   "nav": {
     "ariaLabel": "Language",

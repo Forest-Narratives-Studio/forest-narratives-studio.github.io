@@ -1,11 +1,18 @@
 {
   "meta": {
     "title": "Forest Narratives Studio",
-    "description": "Визитка Forest Narratives Studio — сайт в разработке."
+    "description": "Forest Narratives Studio — интерактивные истории и сказы из пущи."
   },
-  "content": {
-    "h1": "Сайт в разработке",
-    "lead": "Скоро здесь появится контент Forest Narratives Studio."
+  "wordmark": {
+    "grayTop": "студия",
+    "main": "Сказы из пущи",
+    "grayBottom": "",
+    "ariaLabel": "Сказы из пущи, студия"
+  },
+  "social": {
+    "ariaLabel": "Соцсети и мессенджеры",
+    "vk": { "label": "ВКонтакте — Forest Narratives Studio" },
+    "telegram": { "label": "Telegram — Сказы из пущи" }
   },
   "nav": {
     "ariaLabel": "Язык",

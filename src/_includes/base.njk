@@ -9,7 +9,30 @@
   <link rel="alternate" hreflang="ru" href="{{ site.url }}/ru/">
   <link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function () {
+      var SKIES = [
+        "sky_01.webp",
+        "sky_02.webp",
+        "sky_03.webp",
+        "sky_04.webp",
+        "sky_05.webp",
+        "sky_06.webp",
+        "sky_07.webp",
+        "sky_08.webp",
+        "sky_09.webp",
+      ];
+      var name = SKIES[Math.floor(Math.random() * SKIES.length)];
+      document.documentElement.style.setProperty(
+        "--fns-bg-sky-image",
+        'url("/assets/backgrounds/' + name + '")'
+      );
+    })();
+  </script>
 </head>
 <body>
   <nav class="fns-lang" aria-label="{{ i18n[lang].nav.ariaLabel }}">
@@ -31,5 +54,48 @@
   </nav>
 
   {{ content | safe }}
+  <script>
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      var SPEEDS = [-1, -0.5, 0, 0.5, 1];
+      function pick() {
+        return SPEEDS[Math.floor(Math.random() * SPEEDS.length)];
+      }
+
+      var sx = pick();
+      var sy = pick();
+      var rootStyle = getComputedStyle(document.documentElement);
+      var tileBase = parseFloat(rootStyle.getPropertyValue("--fns-bg-sky-tile"));
+      if (!Number.isFinite(tileBase) || tileBase <= 0) tileBase = 512;
+      var tile = tileBase * 2;
+      var driftSec = parseFloat(rootStyle.getPropertyValue("--fns-bg-sky-drift"));
+      if (!Number.isFinite(driftSec) || driftSec <= 0) driftSec = 120;
+      var pxPerSec = tile / driftSec;
+
+      var x = 0;
+      var y = 0;
+      var last = performance.now();
+      var body = document.body;
+
+      function wrap(n) {
+        n = n % tile;
+        if (n < 0) n += tile;
+        return n;
+      }
+
+      function tick(now) {
+        var dt = Math.min((now - last) / 1000, 0.1);
+        last = now;
+        x = wrap(x + sx * pxPerSec * dt);
+        y = wrap(y + sy * pxPerSec * dt);
+        body.style.setProperty("--fns-bg-sky-pos-x", -x + "px");
+        body.style.setProperty("--fns-bg-sky-pos-y", -y + "px");
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    })();
+  </script>
 </body>
 </html>
