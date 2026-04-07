@@ -1,5 +1,13 @@
+@font-face {
+  font-family: "FNS Fusion Pixel 12";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/fusion-pixel-12px-proportional-latin.woff2") format("woff2");
+}
+
 :root {
-  --fns-font-body: "Pixelify Sans", "Trebuchet MS", "Segoe UI", sans-serif;
+  --fns-font-body: "FNS Fusion Pixel 12", ui-monospace, monospace;
   --fns-font-display: "Tiny5", ui-monospace, monospace;
   --fns-body-letter-spacing: 0.02em;
   --fns-body-line-height: 1.75;
@@ -47,12 +55,6 @@
   --fns-bg-sky-tile: 512px;
   --fns-bg-sky-drift: 120s;
   --fns-panel-width: 39rem;
-}
-
-html:lang(ru) {
-  --fns-font-body: "Handjet", "Trebuchet MS", "Segoe UI", sans-serif;
-  --fns-body-letter-spacing: 0.02em;
-  --fns-body-line-height: 1.68;
 }
 
 *,
@@ -234,7 +236,6 @@ p {
 .fns-adventure__question {
   margin-top: 0.35rem;
   color: var(--fns-heading);
-  font-weight: 600;
 }
 
 .fns-adventure__choices {
@@ -256,7 +257,6 @@ p {
   color: var(--fns-link);
   font-family: var(--fns-font-body);
   font-size: clamp(1rem, 2.2vw, 1.08rem);
-  font-weight: 600;
   letter-spacing: var(--fns-body-letter-spacing);
   text-decoration: none;
   border-bottom: 1px dashed color-mix(in srgb, var(--fns-link) 65%, transparent);
