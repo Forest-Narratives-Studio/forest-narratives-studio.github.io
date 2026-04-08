@@ -80,7 +80,7 @@
       title="{{ i18n[lang].nav.en }}"
       aria-label="{{ i18n[lang].nav.en }}"
       {% if lang == "en" %}aria-current="page"{% endif %}
-    >{{ i18n[lang].nav.en }}</a>
+    ><span class="fns-lang__short" aria-hidden="true">EN</span><span class="fns-lang__full" aria-hidden="true">{{ i18n[lang].nav.en }}</span></a>
     <span class="fns-lang-sep" aria-hidden="true">|</span>
     <a
       href="/ru/"
@@ -88,7 +88,7 @@
       title="{{ i18n[lang].nav.ru }}"
       aria-label="{{ i18n[lang].nav.ru }}"
       {% if lang == "ru" %}aria-current="page"{% endif %}
-    >{{ i18n[lang].nav.ru }}</a>
+    ><span class="fns-lang__short" aria-hidden="true">РУ</span><span class="fns-lang__full" aria-hidden="true">{{ i18n[lang].nav.ru }}</span></a>
   </nav>
   {% endif %}
 
