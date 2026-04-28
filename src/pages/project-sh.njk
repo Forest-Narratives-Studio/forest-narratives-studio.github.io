@@ -1,0 +1,83 @@
+---
+pagination:
+  data: i18n.codes
+  size: 1
+  alias: lang
+permalink: "{{ '/ru/chuzhoy-dom/' if lang == 'ru' else '/en/strange-house/' }}"
+layout: base.njk
+xDefaultPath: "/en/strange-house/"
+ruPath: "/ru/chuzhoy-dom/"
+enPath: "/en/strange-house/"
+pageI18nNamespace: "strangeHouse"
+pageLdType: "videoGame"
+bodyClass: "fns-house-theme"
+pageStyles:
+  - "/strange-house.css"
+pageImage: "/assets/strange-house/og-strange-house.webp"
+twitterCard: "summary_large_image"
+disableSky: true
+---
+
+{% set sh = i18n[lang].strangeHouse %}
+<main>
+  <div class="fns-pixel-frame fns-pixel-frame--hero">
+    <div class="fns-pixel-frame__inner">
+      <section class="fns-adventure" aria-label="{{ sh.ariaLabel }}">
+        <h1 class="fns-house-title">{{ sh.title }}</h1>
+        <p class="fns-house-store">
+          <a
+            class="fns-house-store__link"
+            href="https://www.rustore.ru/catalog/app/com.forestnarrationsstudio.house"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="{{ sh.choices.storeAria }}"
+          >
+            <img
+              class="fns-house-store__icon"
+              src="/assets/icons/rustore.svg"
+              width="88"
+              height="88"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+            >
+            <span>RuStore</span>
+          </a>
+        </p>
+        <p class="fns-dialogue fns-dialogue--visitor">
+          <strong class="fns-dialogue__speaker">{{ sh.dialogue.visitorSpeaker }}</strong>
+          {{ sh.dialogue.visitorLine }}
+        </p>
+        <p class="fns-dialogue fns-dialogue--studio">
+          <strong class="fns-dialogue__speaker">{{ sh.dialogue.studioSpeaker }}</strong>
+          {{ sh.dialogue.studioLine }}
+        </p>
+        <figure class="fns-house-illustration">
+          <img src="/assets/strange-house/EM843.webp" width="1080" height="640" alt="{{ sh.images.heroAlt }}" loading="eager" fetchpriority="high" decoding="async">
+        </figure>
+        {% for paragraph in sh.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% if loop.index == 1 %}
+        <figure class="fns-house-illustration">
+          <img src="/assets/strange-house/UHQTV.webp" width="3061" height="1814" alt="{{ sh.images.interiorAlt }}" loading="lazy" decoding="async">
+        </figure>
+        {% elif loop.index == 2 %}
+        <figure class="fns-house-illustration">
+          <img src="/assets/strange-house/ON_ROAD.webp" width="1080" height="640" alt="{{ sh.images.roadAlt }}" loading="lazy" decoding="async">
+        </figure>
+        {% endif %}
+        {% endfor %}
+        <p class="fns-adventure__question">{{ sh.question }}</p>
+        <ul class="fns-adventure__choices">
+          <li>
+            <a href="https://www.rustore.ru/catalog/app/com.forestnarrationsstudio.house" rel="noopener noreferrer" target="_blank" aria-label="{{ sh.choices.downloadAria }}">
+              {{ sh.choices.download }}
+            </a>
+          </li>
+          <li><a href="/{{ lang }}/">{{ sh.choices.back }}</a></li>
+        </ul>
+      </section>
+      <p class="fns-copyright fns-house-copyright">(c) 2023–2026</p>
+    </div>
+  </div>
+</main>

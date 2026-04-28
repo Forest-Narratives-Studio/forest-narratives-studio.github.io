@@ -1,0 +1,278 @@
+@font-face {
+  font-family: "Unutterable";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/Unutterable-Regular-subset.woff2") format("woff2");
+  unicode-range:
+    U+0020-0049,
+    U+004E-004F,
+    U+0052-0055,
+    U+0057,
+    U+0059,
+    U+005B-0069,
+    U+006B-0070,
+    U+0072-0079,
+    U+007B-007E,
+    U+00A9,
+    U+00AB,
+    U+00BB,
+    U+0410-0412,
+    U+0414,
+    U+0416,
+    U+0418-0419,
+    U+041C-0423,
+    U+0427,
+    U+042F-0449,
+    U+044B-044C,
+    U+044E-044F,
+    U+0451,
+    U+2013-2014,
+    U+2018-2019,
+    U+201C-201E,
+    U+2026,
+    U+2116,
+    U+2190;
+}
+
+.fns-house-theme {
+  --house-text: #ecebf4;
+  --house-muted: #a6a2c8;
+  --house-accent: #c5c2ff;
+  --house-panel: rgb(11 11 18 / 68%);
+  --house-border: rgb(36 33 52 / 72%);
+  --house-btn-bg: rgb(22 20 31 / 94%);
+  --house-btn-bg-hover: rgb(32 29 46 / 96%);
+  --house-btn-text: #cecbff;
+  --house-shadow: rgb(0 0 0 / 46%);
+  background-color: #090910;
+  background-image:
+    linear-gradient(rgb(5 5 9 / 50%), rgb(5 5 9 / 38%)),
+    url("/assets/strange-house/splash_background.webp");
+  background-repeat: repeat;
+  background-size: auto, 420px auto;
+  background-position: center top;
+  color: var(--house-text);
+}
+
+.fns-house-theme main {
+  width: min(38rem, calc(100% - 1.25rem));
+  padding: 0.65rem 0 1.25rem;
+}
+
+.fns-house-theme .fns-pixel-frame {
+  border-color: var(--house-border);
+  border-radius: 0.7rem;
+  background: var(--house-panel);
+  box-shadow: 0 18px 34px var(--house-shadow);
+  clip-path: none;
+  -webkit-clip-path: none;
+  backdrop-filter: blur(1px);
+}
+
+.fns-house-theme .fns-pixel-frame.fns-pixel-frame--hero {
+  border: 1px solid rgb(182 170 255 / 82%);
+}
+
+.fns-house-theme .fns-pixel-frame--hero .fns-pixel-frame__inner {
+  padding: clamp(1.1rem, 3.8vw, 2rem);
+}
+
+.fns-house-theme .fns-lang {
+  justify-content: center;
+  padding-top: 0.6rem;
+}
+
+.fns-house-theme .fns-lang a {
+  color: var(--house-muted);
+  font-family: "Unutterable", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fns-house-theme .fns-lang-sep {
+  color: var(--house-muted);
+  font-family: "Unutterable", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+  font-size: 0.82rem;
+}
+
+.fns-house-theme .fns-lang a[aria-current="page"] {
+  color: var(--house-accent);
+}
+
+.fns-house-title {
+  max-width: 9ch;
+  margin: 0 auto 1.35rem;
+  color: var(--house-accent);
+  font-family: "Unutterable", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(1.9rem, 8.2vw, 3.9rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 0.82;
+  text-align: center;
+  text-shadow:
+    1px 0 0 rgb(197 194 255 / 80%),
+    -1px 1px 0 rgb(197 194 255 / 72%),
+    2px -1px 0 rgb(197 194 255 / 42%),
+    0 0 18px rgb(105 99 178 / 34%);
+  text-transform: uppercase;
+}
+
+.fns-house-store {
+  margin: -0.4rem 0 1.25rem;
+  text-align: center;
+}
+
+.fns-house-store__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 0.75rem 0.42rem 0.5rem;
+  border: 1px solid rgb(98 90 154 / 78%);
+  border-radius: 999px;
+  background: rgb(15 14 24 / 88%);
+  box-shadow: inset 0 -8px 14px rgb(0 0 0 / 16%);
+  color: var(--house-btn-text);
+  font-family: "Unutterable", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color 0.12s ease,
+    border-color 0.12s ease,
+    transform 0.12s ease;
+}
+
+.fns-house-store__link:hover,
+.fns-house-store__link:focus-visible {
+  background: var(--house-btn-bg-hover);
+  border-color: rgb(132 123 198 / 92%);
+  color: #e2dfff;
+  transform: translateY(-1px);
+}
+
+.fns-house-store__icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+}
+
+.fns-house-theme .fns-adventure p,
+.fns-house-theme .fns-adventure li,
+.fns-house-theme .fns-adventure a {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.025em;
+  line-height: 1.5;
+}
+
+.fns-house-theme .fns-adventure p {
+  font-size: clamp(0.95rem, 2vw, 1.28rem);
+  color: var(--house-text);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 58%);
+}
+
+.fns-house-theme .fns-dialogue {
+  padding: 0.75rem 0.85rem;
+  border-left-color: rgb(197 194 255 / 82%);
+  background: rgb(7 7 13 / 46%);
+}
+
+.fns-house-theme .fns-dialogue__speaker {
+  color: #ffffff;
+}
+
+.fns-house-illustration {
+  margin: 0.95rem calc(clamp(1.1rem, 3.8vw, 2rem) * -1) 1.1rem;
+}
+
+.fns-house-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border: 1px solid rgb(40 36 58 / 78%);
+  border-radius: 0;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 35%);
+}
+
+.fns-house-theme .fns-adventure__question {
+  margin-top: 1.25rem;
+  margin-bottom: 0.8rem;
+  color: var(--house-muted);
+  font-size: clamp(1.1rem, 2.25vw, 1.28rem);
+  text-align: center;
+}
+
+.fns-house-theme .fns-adventure__choices li {
+  margin-bottom: 0.72rem;
+}
+
+.fns-house-theme .fns-adventure__choices li::before {
+  content: none;
+}
+
+.fns-house-theme .fns-adventure__choices a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgb(40 36 58 / 78%);
+  border-radius: 999px;
+  background: var(--house-btn-bg);
+  color: var(--house-btn-text);
+  font-size: clamp(1.08rem, 2.6vw, 1.34rem);
+  text-align: center;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(40 36 58 / 78%);
+  box-shadow: inset 0 -10px 18px rgb(0 0 0 / 18%);
+  transition: background-color 0.12s ease, transform 0.12s ease;
+}
+
+.fns-house-theme .fns-adventure__choices a:hover,
+.fns-house-theme .fns-adventure__choices a:focus-visible {
+  background: var(--house-btn-bg-hover);
+  color: #e2dfff;
+  border-color: rgb(98 90 154 / 88%);
+  transform: translateY(-1px);
+}
+
+.fns-house-copyright {
+  margin-top: 1.1rem;
+  color: rgb(166 162 200 / 78%);
+  font-family: "Unutterable", "Trebuchet MS", "Arial Narrow", Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+}
+
+@media (max-width: 40rem) {
+  .fns-house-theme main {
+    width: min(100%, calc(100% - 0.75rem));
+  }
+
+  .fns-house-title {
+    margin-bottom: 1.1rem;
+  }
+
+  .fns-house-store {
+    margin-top: -0.2rem;
+    margin-bottom: 1.05rem;
+  }
+
+  .fns-house-store__link {
+    font-size: 0.84rem;
+  }
+
+  .fns-house-theme .fns-adventure p {
+    font-size: clamp(0.9rem, 4.5vw, 1.08rem);
+  }
+
+  .fns-house-theme .fns-adventure__choices a {
+    font-size: clamp(1.05rem, 6vw, 1.25rem);
+  }
+
+  .fns-house-copyright {
+    font-size: 0.72rem;
+  }
+}

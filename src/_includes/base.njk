@@ -1,10 +1,19 @@
 {% set currentLang = pageLang or lang or "en" %}
 {% set currentMeta = i18n[currentLang].meta %}
-{% set metaTitle = pageTitle or currentMeta.title %}
-{% set metaDescription = pageDescription or currentMeta.description %}
+{% set pageText = pageI18nNamespace and i18n[currentLang][pageI18nNamespace] %}
+{% set pageMeta = pageText and pageText.meta %}
+{% set metaTitle = pageTitle or (pageMeta and pageMeta.title) or currentMeta.title %}
+{% set metaDescription = pageDescription or (pageMeta and pageMeta.description) or currentMeta.description %}
 {% set metaLocale = pageLocale or currentMeta.locale %}
 {% set canonicalUrl = site.url ~ (canonicalPath or page.url) %}
 {% set xDefaultUrl = site.url ~ (xDefaultPath or "/") %}
+{% set ruAlternatePath = ruPath or "/ru/" %}
+{% set enAlternatePath = enPath or "/en/" %}
+{% set metaImageUrl = site.url ~ (pageImage or "/assets/backgrounds/sky_01.webp") %}
+{% set orgDescription = currentMeta.description %}
+{% set pageOgImageAlt = (pageMeta and pageMeta.ogImageAlt) or pageImageAlt %}
+{% set ogImageAltText = pageOgImageAlt or metaTitle %}
+{% set twitterCardType = twitterCard or "summary" %}
 <!DOCTYPE html>
 <html lang="{{ currentLang }}">
 <head>
@@ -15,8 +24,8 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#1a1f1a">
   <link rel="canonical" href="{{ canonicalUrl }}">
-  <link rel="alternate" hreflang="ru" href="{{ site.url }}/ru/">
-  <link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
+  <link rel="alternate" hreflang="ru" href="{{ site.url }}{{ ruAlternatePath }}">
+  <link rel="alternate" hreflang="en" href="{{ site.url }}{{ enAlternatePath }}">
   <link rel="alternate" hreflang="x-default" href="{{ xDefaultUrl }}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
@@ -25,23 +34,34 @@
   <meta property="og:description" content="{{ metaDescription }}">
   <meta property="og:url" content="{{ canonicalUrl }}">
   <meta property="og:locale" content="{{ metaLocale }}">
-  <meta property="og:locale:alternate" content="ru_RU">
+  <meta property="og:image" content="{{ metaImageUrl }}">
+  <meta property="og:image:alt" content="{{ ogImageAltText }}">
+  {% if currentLang == "ru" %}
   <meta property="og:locale:alternate" content="en_US">
-  <meta name="twitter:card" content="summary">
+  {% else %}
+  <meta property="og:locale:alternate" content="ru_RU">
+  {% endif %}
+  <meta name="twitter:card" content="{{ twitterCardType }}">
   <meta name="twitter:title" content="{{ metaTitle }}">
   <meta name="twitter:description" content="{{ metaDescription }}">
+  <meta name="twitter:image" content="{{ metaImageUrl }}">
   <link rel="preload" href="/assets/fonts/fusion-pixel-12px-proportional-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  {% if pageStyles %}
+    {% for stylesheet in pageStyles %}
+  <link rel="stylesheet" href="{{ stylesheet }}">
+    {% endfor %}
+  {% endif %}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "{{ site.name }}",
+      "name": "{{ site.name | escapeJsonString }}",
       "url": "{{ site.url }}",
-      "description": "{{ metaDescription }}",
+      "description": "{{ orgDescription | escapeJsonString }}",
       "sameAs": [
         "{{ site.social.vk }}",
         "{{ site.social.telegram }}",
@@ -49,6 +69,36 @@
       ]
     }
   </script>
+  {% if pageLdType == "videoGame" %}
+  {% set shLd = i18n[lang].strangeHouse %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "{{ shLd.ld.schemaName | escapeJsonString }}",
+      "description": "{{ shLd.meta.description | escapeJsonString }}",
+      "url": "{{ canonicalUrl }}",
+      "inLanguage": "{{ shLd.ld.inLanguage }}",
+      "operatingSystem": "{{ shLd.ld.operatingSystem | escapeJsonString }}",
+      "applicationCategory": "{{ shLd.ld.applicationCategory }}",
+      "author": {
+        "@type": "Organization",
+        "name": "{{ site.name | escapeJsonString }}",
+        "url": "{{ site.url }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.name | escapeJsonString }}",
+        "url": "{{ site.url }}"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ shLd.ld.offerUrl }}"
+      }
+    }
+  </script>
+  {% endif %}
+  {% if disableSky != true %}
   <script>
     (function () {
       var SKIES = [
@@ -69,13 +119,14 @@
       );
     })();
   </script>
+  {% endif %}
 <!-- Yandex.Metrika counter --> <script type="text/javascript">     (function(m,e,t,r,i,k,a){         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};         m[i].l=1*new Date();         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108431769', 'ym');      ym(108431769, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}); </script> <noscript><div><img src="https://mc.yandex.ru/watch/108431769" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
   {% if showLanguageNav != false %}
   <nav class="fns-lang" aria-label="{{ i18n[lang].nav.ariaLabel }}">
     <a
-      href="/en/"
+      href="{{ enAlternatePath }}"
       hreflang="en"
       title="{{ i18n[lang].nav.en }}"
       aria-label="{{ i18n[lang].nav.en }}"
@@ -83,7 +134,7 @@
     ><span class="fns-lang__short" aria-hidden="true">EN</span><span class="fns-lang__full" aria-hidden="true">{{ i18n[lang].nav.en }}</span></a>
     <span class="fns-lang-sep" aria-hidden="true">|</span>
     <a
-      href="/ru/"
+      href="{{ ruAlternatePath }}"
       hreflang="ru"
       title="{{ i18n[lang].nav.ru }}"
       aria-label="{{ i18n[lang].nav.ru }}"
@@ -93,6 +144,7 @@
   {% endif %}
 
   {{ content | safe }}
+  {% if disableSky != true %}
   <script>
     (function () {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -136,5 +188,6 @@
       requestAnimationFrame(tick);
     })();
   </script>
+  {% endif %}
 </body>
 </html>

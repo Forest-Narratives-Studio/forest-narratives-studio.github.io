@@ -240,6 +240,27 @@ p {
   text-wrap: pretty;
 }
 
+.fns-dialogue {
+  padding: 0.35rem 0.55rem;
+  border-left: 2px solid;
+  background: color-mix(in srgb, var(--fns-bg) 74%, transparent);
+}
+
+.fns-dialogue--visitor {
+  border-left-color: color-mix(in srgb, var(--fns-link) 70%, var(--fns-heading) 30%);
+  color: color-mix(in srgb, var(--fns-text) 84%, var(--fns-heading) 16%);
+}
+
+.fns-dialogue--studio {
+  border-left-color: color-mix(in srgb, var(--fns-accent) 74%, var(--fns-wordmark-main) 26%);
+  color: color-mix(in srgb, var(--fns-text) 78%, var(--fns-wordmark-main) 22%);
+}
+
+.fns-dialogue__speaker {
+  font-weight: 700;
+  color: var(--fns-heading);
+}
+
 .fns-adventure__question {
   margin-top: 0.35rem;
   color: var(--fns-heading);

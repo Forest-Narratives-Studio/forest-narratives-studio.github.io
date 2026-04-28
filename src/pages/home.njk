@@ -5,6 +5,8 @@ pagination:
   alias: lang
 permalink: "/{{ lang }}/"
 layout: base.njk
+pageImage: "/assets/strange-house/og-strange-house.webp"
+twitterCard: "summary_large_image"
 ---
 
 <main>
@@ -26,8 +28,12 @@ layout: base.njk
         <p class="fns-adventure__question">{{ i18n[lang].adventure.question }}</p>
         <ul class="fns-adventure__choices">
           {% for choice in i18n[lang].adventure.choices %}
+          {% set isExternal = choice.href.indexOf("http://") == 0 or choice.href.indexOf("https://") == 0 %}
           <li>
-            <a href="{{ choice.href }}" rel="noopener noreferrer" target="_blank">{{ choice.label }}</a>
+            <a
+              href="{{ choice.href }}"
+              {% if isExternal %}rel="noopener noreferrer" target="_blank"{% endif %}
+            >{{ choice.label }}</a>
           </li>
           {% endfor %}
         </ul>

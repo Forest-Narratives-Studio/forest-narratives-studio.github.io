@@ -13,15 +13,15 @@
   "adventure": {
     "ariaLabel": "Text block with action choices",
     "paragraphs": [
-      "While traversing the information-and-telecommunications network that bears the conventional designation “Internet,” you discovered the page of the independent game studio “Forest Narratives.”",
-      "The name feels vaguely familiar: perhaps you have already played the text horror quest “Strange House,” available in RuStore for Android devices.",
-      "At this very moment, the studio is extremely busy—it is working on the visual novel “The Last Warm Day.”"
+      "Somewhere on the Internet you stumble upon Forest Narratives—an independent studio that tells interactive stories.",
+      "The name sounds familiar: maybe you already played Strange House, a text-based horror quest on RuStore for Android.",
+      "Right now the studio is hard at work on the visual novel The Last Warm Day."
     ],
-    "question": "What will your next actions be?",
+    "question": "What do you do next?",
     "choices": [
       {
-        "label": "Download “Strange House” from RuStore",
-        "href": "https://www.rustore.ru/catalog/app/com.forestnarrationsstudio.house"
+        "label": "Ask about Strange House",
+        "href": "/en/strange-house/"
       },
       {
         "label": "Enter the VK community",
@@ -32,10 +32,49 @@
         "href": "https://t.me/forestnarrativesstudio"
       },
       {
-        "label": "Inspect the Max channel",
+        "label": "Open the Max channel",
         "href": "https://max.ru/join/YQzEQSTrjVDh0yNAw5lNeJrT2PIjKEwnPiTQJtTaCIM"
       }
     ]
+  },
+  "strangeHouse": {
+    "meta": {
+      "title": "Strange House — Forest Narratives Studio",
+      "description": "Strange House is an interactive fiction story where every decision changes the path ahead.",
+      "ogImageAlt": "Strange House — promotional art for the game"
+    },
+    "ld": {
+      "schemaName": "Strange House",
+      "inLanguage": "en",
+      "operatingSystem": "Android 6+",
+      "applicationCategory": "GameApplication",
+      "offerUrl": "https://www.rustore.ru/catalog/app/com.forestnarrationsstudio.house"
+    },
+    "ariaLabel": "Strange House project page",
+    "title": "STRANGE HOUSE",
+    "dialogue": {
+      "visitorSpeaker": "You:",
+      "visitorLine": "What kind of game is Strange House?",
+      "studioSpeaker": "Studio:",
+      "studioLine": "Curious? Then settle in, and I'll tell you the story."
+    },
+    "images": {
+      "heroAlt": "Strange House atmospheric illustration",
+      "interiorAlt": "Strange House atmospheric scene inside the house",
+      "roadAlt": "Strange House atmospheric scene on the road"
+    },
+    "paragraphs": [
+      "“These are troubled lands. I wouldn’t go wandering here for no reason.” Igor checked the front-door lock once more, then returned to the table. “After dark, I try not to step outside without a rifle. Truth be told, even with one I’d rather stay put till sunrise. So what brings you here? It’s a long night. Talk, and I’ll listen.”",
+      "Strange House is interactive fiction: a story that moves only by your choices. Will your path be long or cut short? Will you find common ground with those you meet—or make enemies? Happy ending, bitter one, or tragedy? It’s all on you, one decision at a time.",
+      "The game is available for Android smartphones (version 6 and above)."
+    ],
+    "question": "What do you do next?",
+    "choices": {
+      "storeAria": "Open Strange House in RuStore (opens in a new tab)",
+      "download": "Download Strange House from RuStore",
+      "downloadAria": "Download Strange House from RuStore (opens in a new tab)",
+      "back": "← Back"
+    }
   },
   "nav": {
     "ariaLabel": "Language",
