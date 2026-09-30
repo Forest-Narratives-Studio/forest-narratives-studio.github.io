@@ -7,6 +7,8 @@
     </div>
     <div class="fns-vc-part--1__links">
       <ul class="fns-vc-notebook-links" aria-label="{{ vc.choices.linksAria }}">
+        {# STEAM_LINK_HIDDEN: страница Steam ещё не готова — раскомментировать, когда store page будет публичной #}
+        {#
         <li>
           <a
             class="fns-vc-notebook-links__link"
@@ -18,6 +20,7 @@
             {{ vc.choices.steam }}
           </a>
         </li>
+        #}
         <li>
           <a
             class="fns-vc-notebook-links__link"
@@ -34,15 +37,22 @@
   <section class="fns-vc-part fns-vc-part--2">
     <div class="fns-vc-panel fns-vc-panel--navy">
       <figure class="fns-vc-illustration" id="vc-screenshot">
-        <img
-          src="/assets/voluntary-consent/hero-jar2-{{ lang }}.webp"
-          width="1600"
-          height="900"
-          alt="{{ vc.images.heroAlt }}"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
+        <a
+          class="fns-vc-shot"
+          href="/assets/voluntary-consent/hero-jar2-{{ lang }}.webp"
+          data-vc-lightbox
+          aria-label="{{ vc.lightbox.openAria }}"
         >
+          <img
+            src="/assets/voluntary-consent/hero-jar2-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.heroAlt }}"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </a>
       </figure>
       <p class="fns-vc-lead">{{ vc.lead }}</p>
       <p class="fns-vc-about">
@@ -62,64 +72,106 @@
     <div class="fns-vc-panel fns-vc-panel--lab">
       <div class="fns-vc-gallery">
         <figure class="fns-vc-gallery__item">
-          <img
-            src="/assets/voluntary-consent/desk-jar0-{{ lang }}.webp"
-            width="1600"
-            height="900"
-            alt="{{ vc.images.deskAlt }}"
-            loading="lazy"
-            decoding="async"
+          <a
+            class="fns-vc-shot"
+            href="/assets/voluntary-consent/desk-jar0-{{ lang }}.webp"
+            data-vc-lightbox
+            aria-label="{{ vc.lightbox.openAria }}"
           >
+            <img
+              src="/assets/voluntary-consent/desk-jar0-{{ lang }}.webp"
+              width="1600"
+              height="900"
+              alt="{{ vc.images.deskAlt }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
         </figure>
         <figure class="fns-vc-gallery__item">
-          <img
-            src="/assets/voluntary-consent/cages-{{ lang }}.webp"
-            width="1600"
-            height="900"
-            alt="{{ vc.images.cagesAlt }}"
-            loading="lazy"
-            decoding="async"
+          <a
+            class="fns-vc-shot"
+            href="/assets/voluntary-consent/cages-{{ lang }}.webp"
+            data-vc-lightbox
+            aria-label="{{ vc.lightbox.openAria }}"
           >
+            <img
+              src="/assets/voluntary-consent/cages-{{ lang }}.webp"
+              width="1600"
+              height="900"
+              alt="{{ vc.images.cagesAlt }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
         </figure>
         <figure class="fns-vc-gallery__item">
-          <img
-            src="/assets/voluntary-consent/map-{{ lang }}.webp"
-            width="1600"
-            height="900"
-            alt="{{ vc.images.mapAlt }}"
-            loading="lazy"
-            decoding="async"
+          <a
+            class="fns-vc-shot"
+            href="/assets/voluntary-consent/map-{{ lang }}.webp"
+            data-vc-lightbox
+            aria-label="{{ vc.lightbox.openAria }}"
           >
+            <img
+              src="/assets/voluntary-consent/map-{{ lang }}.webp"
+              width="1600"
+              height="900"
+              alt="{{ vc.images.mapAlt }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
         </figure>
         <figure class="fns-vc-gallery__item">
-          <img
-            src="/assets/voluntary-consent/phone-{{ lang }}.webp"
-            width="1600"
-            height="900"
-            alt="{{ vc.images.phoneAlt }}"
-            loading="lazy"
-            decoding="async"
+          <a
+            class="fns-vc-shot"
+            href="/assets/voluntary-consent/phone-{{ lang }}.webp"
+            data-vc-lightbox
+            aria-label="{{ vc.lightbox.openAria }}"
           >
+            <img
+              src="/assets/voluntary-consent/phone-{{ lang }}.webp"
+              width="1600"
+              height="900"
+              alt="{{ vc.images.phoneAlt }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
         </figure>
         <figure class="fns-vc-gallery__item">
-          <img
-            src="/assets/voluntary-consent/document-{{ lang }}.webp"
-            width="1600"
-            height="900"
-            alt="{{ vc.images.documentAlt }}"
-            loading="lazy"
-            decoding="async"
+          <a
+            class="fns-vc-shot"
+            href="/assets/voluntary-consent/document-{{ lang }}.webp"
+            data-vc-lightbox
+            aria-label="{{ vc.lightbox.openAria }}"
           >
+            <img
+              src="/assets/voluntary-consent/document-{{ lang }}.webp"
+              width="1600"
+              height="900"
+              alt="{{ vc.images.documentAlt }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
         </figure>
         <figure class="fns-vc-gallery__item">
-          <img
-            src="/assets/voluntary-consent/entrance-day-{{ lang }}.webp"
-            width="1600"
-            height="900"
-            alt="{{ vc.images.entranceAlt }}"
-            loading="lazy"
-            decoding="async"
+          <a
+            class="fns-vc-shot"
+            href="/assets/voluntary-consent/entrance-day-{{ lang }}.webp"
+            data-vc-lightbox
+            aria-label="{{ vc.lightbox.openAria }}"
           >
+            <img
+              src="/assets/voluntary-consent/entrance-day-{{ lang }}.webp"
+              width="1600"
+              height="900"
+              alt="{{ vc.images.entranceAlt }}"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
         </figure>
       </div>
     </div>
@@ -129,6 +181,8 @@
     <div class="fns-vc-panel fns-vc-panel--burgundy">
       <p class="fns-vc-question">{{ vc.question }}</p>
       <div class="fns-vc-choices">
+        {# STEAM_LINK_HIDDEN: страница Steam ещё не готова — раскомментировать, когда store page будет публичной #}
+        {#
         <a
           class="fns-vc-choice"
           href="https://store.steampowered.com/app/1296709/"
@@ -139,6 +193,7 @@
           <span class="fns-vc-choice__key">1</span>
           <span class="fns-vc-choice__label">{{ vc.choices.steam }}</span>
         </a>
+        #}
         <a class="fns-vc-choice" href="/{{ lang }}/">
           <span class="fns-vc-choice__key">2</span>
           <span class="fns-vc-choice__label">{{ vc.choices.back }}</span>
@@ -149,3 +204,45 @@
 
   <p class="fns-copyright fns-vc-copyright">(c) 2023–2026</p>
 </main>
+
+<dialog
+  class="fns-vc-lightbox"
+  id="fns-vc-lightbox"
+  aria-label="{{ vc.lightbox.dialogAria }}"
+>
+  <button
+    type="button"
+    class="fns-vc-lightbox__close"
+    data-vc-lightbox-close
+    aria-label="{{ vc.lightbox.closeAria }}"
+  >
+    <span aria-hidden="true">x</span>
+  </button>
+  <button
+    type="button"
+    class="fns-vc-lightbox__nav fns-vc-lightbox__nav--prev"
+    data-vc-lightbox-prev
+    aria-label="{{ vc.lightbox.prevAria }}"
+  >
+    <span aria-hidden="true">&lt;</span>
+  </button>
+  <figure class="fns-vc-lightbox__figure">
+    <img
+      class="fns-vc-lightbox__img"
+      data-vc-lightbox-img
+      src=""
+      alt=""
+      width="1600"
+      height="900"
+      decoding="async"
+    >
+  </figure>
+  <button
+    type="button"
+    class="fns-vc-lightbox__nav fns-vc-lightbox__nav--next"
+    data-vc-lightbox-next
+    aria-label="{{ vc.lightbox.nextAria }}"
+  >
+    <span aria-hidden="true">&gt;</span>
+  </button>
+</dialog>

@@ -1,5 +1,5 @@
 /**
- * Voluntary Consent — scroll-driven body background.
+ * Voluntary Consent — scroll-driven body background + screenshot lightbox.
  * Scope: body.fns-vc-theme only. No libraries.
  *
  * Scroll readout = scrollY + 40% of viewport height so color shifts when a
@@ -152,4 +152,199 @@
     window.visualViewport.addEventListener("resize", onResize, { passive: true });
     window.visualViewport.addEventListener("scroll", scheduleUpdate, { passive: true });
   }
+})();
+
+/**
+ * Screenshot lightbox (native <dialog>): click any [data-vc-lightbox] shot,
+ * browse the full set with arrows / keys, close via × / Esc / backdrop.
+ */
+(function () {
+  "use strict";
+
+  var body = document.body;
+  if (!body || !body.classList.contains("fns-vc-theme")) return;
+
+  var dialog = document.getElementById("fns-vc-lightbox");
+  if (!dialog || typeof dialog.showModal !== "function") return;
+
+  var imgEl = dialog.querySelector("[data-vc-lightbox-img]");
+  var closeBtn = dialog.querySelector("[data-vc-lightbox-close]");
+  var prevBtn = dialog.querySelector("[data-vc-lightbox-prev]");
+  var nextBtn = dialog.querySelector("[data-vc-lightbox-next]");
+  if (!imgEl || !closeBtn || !prevBtn || !nextBtn) return;
+
+  var triggers = Array.prototype.slice.call(
+    document.querySelectorAll("a[data-vc-lightbox]")
+  );
+  if (!triggers.length) return;
+
+  var index = 0;
+  /** Document scrollY frozen while the lightbox is open. */
+  var lockedScrollY = 0;
+  var scrollLocked = false;
+  /** @type {HTMLElement | null} */
+  var openerEl = null;
+
+  function shotFromTrigger(trigger) {
+    var nested = trigger.querySelector("img");
+    return {
+      src: trigger.getAttribute("href") || (nested && nested.getAttribute("src")) || "",
+      alt: (nested && nested.getAttribute("alt")) || "",
+    };
+  }
+
+  function showAt(nextIndex) {
+    var total = triggers.length;
+    index = ((nextIndex % total) + total) % total;
+    var shot = shotFromTrigger(triggers[index]);
+    imgEl.src = shot.src;
+    imgEl.alt = shot.alt;
+  }
+
+  function readScrollY() {
+    return window.scrollY || window.pageYOffset || 0;
+  }
+
+  function restoreScrollY(y) {
+    window.scrollTo(0, y);
+    if (document.documentElement) document.documentElement.scrollTop = y;
+    body.scrollTop = y;
+  }
+
+  /**
+   * Pin the page in place so showModal()/focus inside <dialog> cannot jump
+   * scroll to the dialog's in-document position (it lives after <main>).
+   */
+  function lockPageScroll() {
+    if (scrollLocked) return;
+    lockedScrollY = readScrollY();
+    body.classList.add("fns-vc-lightbox-open");
+    body.style.position = "fixed";
+    body.style.top = "-" + lockedScrollY + "px";
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    scrollLocked = true;
+  }
+
+  function unlockPageScroll() {
+    if (!scrollLocked) return;
+    var y = lockedScrollY;
+    var html = document.documentElement;
+    // Force instant scroll while settling; page theme uses scroll-behavior: smooth.
+    html.style.scrollBehavior = "auto";
+
+    // Drop overflow:hidden (via class) BEFORE scrollTo — otherwise restore is a no-op.
+    body.classList.remove("fns-vc-lightbox-open");
+    body.style.position = "";
+    body.style.top = "";
+    body.style.left = "";
+    body.style.right = "";
+    body.style.width = "";
+    scrollLocked = false;
+
+    // Cancel dialog focus-restore scroll: refocus without scrolling, then pin Y.
+    if (openerEl && typeof openerEl.focus === "function") {
+      try {
+        openerEl.focus({ preventScroll: true });
+      } catch (err) {
+        // ignore
+      }
+    }
+    openerEl = null;
+
+    restoreScrollY(y);
+
+    // Re-assert for a few ticks (focus-restore / layout). Prefer timers over rAF:
+    // rAF may not run in background/hidden tabs.
+    var ticks = 0;
+    function hold() {
+      restoreScrollY(y);
+      ticks += 1;
+      if (ticks < 8) {
+        window.setTimeout(hold, 16);
+      } else {
+        html.style.scrollBehavior = "";
+      }
+    }
+    window.setTimeout(hold, 0);
+  }
+
+  function openAt(nextIndex, opener) {
+    openerEl = opener || triggers[nextIndex] || null;
+    showAt(nextIndex);
+    if (!dialog.open) {
+      lockPageScroll();
+      dialog.showModal();
+      // Some engines still nudge scroll during showModal; re-pin immediately.
+      restoreScrollY(0);
+    }
+  }
+
+  /**
+   * Unlock after dialog.close() returns. setTimeout(0) — not rAF — so unlock
+   * still runs in background tabs where animation frames are paused.
+   */
+  function scheduleUnlock() {
+    window.setTimeout(function () {
+      unlockPageScroll();
+    }, 0);
+  }
+
+  function closeLightbox() {
+    if (dialog.open) dialog.close();
+    scheduleUnlock();
+  }
+
+  function step(delta) {
+    showAt(index + delta);
+  }
+
+  triggers.forEach(function (trigger, i) {
+    trigger.addEventListener("click", function (event) {
+      event.preventDefault();
+      openAt(i, trigger);
+    });
+  });
+
+  closeBtn.addEventListener("click", function () {
+    closeLightbox();
+  });
+
+  prevBtn.addEventListener("click", function () {
+    step(-1);
+  });
+
+  nextBtn.addEventListener("click", function () {
+    step(1);
+  });
+
+  dialog.addEventListener("click", function (event) {
+    if (event.target === dialog) closeLightbox();
+  });
+
+  // Esc / programmatic close fallbacks
+  dialog.addEventListener("toggle", function (event) {
+    if (event.newState === "closed") scheduleUnlock();
+  });
+
+  dialog.addEventListener("close", function () {
+    scheduleUnlock();
+  });
+
+  dialog.addEventListener("cancel", function () {
+    // Esc: dialog closes itself after cancel; unlock on next frame.
+    scheduleUnlock();
+  });
+
+  dialog.addEventListener("keydown", function (event) {
+    if (!dialog.open) return;
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      step(-1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      step(1);
+    }
+  });
 })();

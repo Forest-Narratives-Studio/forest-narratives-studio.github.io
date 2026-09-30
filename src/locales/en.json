@@ -99,6 +99,13 @@
       "entranceAlt": "Voluntary Consent scene: RNSS building entrance by day"
     },
     "question": "What do you do next?",
+    "lightbox": {
+      "dialogAria": "Screenshot gallery",
+      "openAria": "Open screenshot fullscreen",
+      "closeAria": "Close",
+      "prevAria": "Previous screenshot",
+      "nextAria": "Next screenshot"
+    },
     "choices": {
       "steam": "Add to wishlist",
       "steamAria": "Open Voluntary Consent on Steam (opens in a new tab)",
