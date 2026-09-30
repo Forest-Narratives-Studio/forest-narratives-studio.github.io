@@ -23,7 +23,15 @@ twitterCard: "summary_large_image"
       </div>
       <section class="fns-adventure" aria-label="{{ i18n[lang].adventure.ariaLabel }}">
         {% for paragraph in i18n[lang].adventure.paragraphs %}
-        <p>{{ paragraph }}</p>
+        <p>
+          {%- for seg in paragraph -%}
+          {%- if seg.href -%}
+          <a href="{{ seg.href }}">{{ seg.text }}</a>
+          {%- else -%}
+          {{ seg.text }}
+          {%- endif -%}
+          {%- endfor -%}
+        </p>
         {% endfor %}
         <p class="fns-adventure__question">{{ i18n[lang].adventure.question }}</p>
         <ul class="fns-adventure__choices">

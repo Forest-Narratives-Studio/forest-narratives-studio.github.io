@@ -13,28 +13,22 @@
   "adventure": {
     "ariaLabel": "Text block with action choices",
     "paragraphs": [
-      "Somewhere on the Internet you stumble upon Forest Narratives—an independent studio that tells interactive stories.",
-      "The name sounds familiar: maybe you already played Strange House, a text-based horror quest on RuStore for Android.",
-      "Right now the studio is hard at work on the visual novel The Last Warm Day."
+      [
+        { "text": "Somewhere on the Internet you stumble upon Forest Narratives—an independent studio that tells interactive stories." }
+      ],
+      [
+        { "text": "The name sounds familiar: maybe you already played " },
+        { "text": "Strange House", "href": "/en/strange-house/" },
+        { "text": ", a text-based horror quest on RuStore for Android." }
+      ],
+      [
+        { "text": "Right now the studio is hard at work on the detective visual novel " },
+        { "text": "Voluntary Consent", "href": "/en/voluntary-consent/" },
+        { "text": "." }
+      ]
     ],
     "question": "What do you do next?",
     "choices": [
-      {
-        "label": "Ask about The Last Warm Day",
-        "href": "/en/last-warm-day/"
-      },
-      {
-        "label": "Ask about Voluntary Consent",
-        "href": "/en/voluntary-consent/"
-      },
-      {
-        "label": "Ask about Strange House",
-        "href": "/en/strange-house/"
-      },
-      {
-        "label": "Ask about the Fe engine",
-        "href": "/en/forest-engine/"
-      },
       {
         "label": "Enter the VK community",
         "href": "https://vk.com/forestnarrativesstudio"

@@ -240,6 +240,32 @@ p {
   text-wrap: pretty;
 }
 
+.fns-adventure p a {
+  color: var(--fns-link);
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--fns-link) 65%, transparent);
+}
+
+.fns-adventure p a:visited {
+  color: var(--fns-link);
+  border-bottom-color: color-mix(in srgb, var(--fns-link) 65%, transparent);
+}
+
+.fns-adventure p a:hover,
+.fns-adventure p a:focus-visible {
+  color: var(--fns-link-hover);
+  border-bottom-color: var(--fns-link-hover);
+}
+
+.fns-adventure p a:active {
+  color: var(--fns-accent);
+}
+
+.fns-adventure p a:focus-visible {
+  outline: 2px solid var(--fns-focus);
+  outline-offset: 3px;
+}
+
 .fns-dialogue {
   padding: 0.35rem 0.55rem;
   border-left: 2px solid;
