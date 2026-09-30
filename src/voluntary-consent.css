@@ -1,0 +1,711 @@
+@font-face {
+  font-family: "Denistina";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/denistina_en-subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "CozetteVector";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/CozetteVector-subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "TT2020Base";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/TT2020Base-Regular-subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Tiny5";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/Tiny5-Regular-subset.woff2") format("woff2");
+}
+
+/*
+ * Voluntary Consent — 4-part layout.
+ * Panels 2–4: OMB L-cut (tokens.css --pixel-l-cut) + inset ink frame (no CSS border).
+ * Choices: selectable/hotkey plate + ~0.14em invert outline.
+ */
+
+html:has(body.fns-vc-theme) {
+  scroll-behavior: smooth;
+}
+
+body.fns-vc-theme {
+  --vc-page-bg: #121216;
+  --vc-font-title: "Denistina", Georgia, "Times New Roman", serif;
+  --vc-font-body: "CozetteVector", "Courier New", Courier, monospace;
+  --vc-font-typewriter: "TT2020Base", "Courier New", Courier, monospace;
+  --vc-font-micro: "Tiny5", "Courier New", Courier, monospace;
+
+  /* Notebook (part 1) — dark ink on paper */
+  --vc-paper-ink: #1a1520;
+  --vc-paper-ink-muted: rgb(26 21 32 / 78%);
+  --vc-paper-link: #2a1a38;
+
+  /* Atmosphere panels */
+  --vc-navy-bg: #151b3f;
+  --vc-navy-ink: #d8edf2;
+  --vc-lab-bg: #0e1a1c;
+  --vc-lab-ink: #c8f5e8;
+  --vc-burgundy-bg: #3a0f27;
+  --vc-burgundy-ink: #ffd9b0;
+
+  /* Shared OMB L-cut (12-point, axis-aligned step) */
+  --pixel-step: 3px;
+  --pixel-box-frame: 3px;
+  --pixel-stroke-hover: 0.14em;
+  --pixel-stroke-press: 0.22em;
+  --pixel-l-cut: polygon(
+    var(--pixel-step) 0,
+    calc(100% - var(--pixel-step)) 0,
+    calc(100% - var(--pixel-step)) var(--pixel-step),
+    100% var(--pixel-step),
+    100% calc(100% - var(--pixel-step)),
+    calc(100% - var(--pixel-step)) calc(100% - var(--pixel-step)),
+    calc(100% - var(--pixel-step)) 100%,
+    var(--pixel-step) 100%,
+    var(--pixel-step) calc(100% - var(--pixel-step)),
+    0 calc(100% - var(--pixel-step)),
+    0 var(--pixel-step),
+    var(--pixel-step) var(--pixel-step)
+  );
+
+  --vc-lang: rgb(220 224 232 / 78%);
+  --vc-lang-active: #e8ecf4;
+  --vc-lang-sep: rgb(220 224 232 / 40%);
+  --vc-copyright: rgb(220 224 232 / 42%);
+
+  background-color: var(--vc-page-bg);
+  background-image: none;
+  color: var(--vc-lang-active);
+  color-scheme: dark;
+}
+
+body.fns-vc-theme main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1.35rem;
+  width: min(42rem, calc(100% - 1.25rem));
+  padding: 0.5rem 0 1.35rem;
+}
+
+/* Lang switch on dark page chrome */
+body.fns-vc-theme .fns-lang {
+  justify-content: center;
+  padding-top: 0.6rem;
+}
+
+body.fns-vc-theme .fns-lang a {
+  color: var(--vc-lang);
+  font-family: var(--vc-font-micro);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 1;
+}
+
+body.fns-vc-theme .fns-lang a:not([aria-current="page"]) {
+  opacity: 0.55;
+}
+
+body.fns-vc-theme .fns-lang a:not([aria-current="page"]):hover {
+  opacity: 0.9;
+  color: var(--vc-lang-active);
+}
+
+body.fns-vc-theme .fns-lang-sep {
+  color: var(--vc-lang-sep);
+  font-family: var(--vc-font-micro);
+  font-size: 0.95rem;
+}
+
+body.fns-vc-theme .fns-lang a[aria-current="page"] {
+  color: var(--vc-lang-active);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  opacity: 1;
+}
+
+/* ——— Sections ——— */
+
+.fns-vc-part {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Part 1 — notebook sheet, no frame
+ * Asset: top-trimmed sheet with real alpha on torn left edge (page bg shows through).
+ * Red vertical margin ≈ 84.9% from left (source x≈869 / 1024 incl. left fringe).
+ * Two vertical zones:
+ *   __copy  — title + shortDescription above the blood stain (wider right inset)
+ *   links   — typographic list at stain level (narrower right inset toward stain)
+ * Section right pad ≈ 8% (links column); copy adds extra pad to ≈ 15% total. */
+.fns-vc-part--1 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  /* top | right (links toward stain) | bottom (under links in stain pad) | left (~20%) */
+  padding: clamp(1.25rem, 4vw, 2rem) 8% clamp(3.25rem, 18%, 5rem)
+    clamp(2.75rem, 20%, 5.5rem);
+  background-color: transparent;
+  background-image: url("/assets/voluntary-consent/notebook-sheet.webp");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  color: var(--vc-paper-ink);
+}
+
+.fns-vc-part--1__copy {
+  box-sizing: border-box;
+  /* Keep body copy clear of the stain: ~15% from sheet right edge */
+  padding-right: 7%;
+  margin: 0 0 clamp(4.5rem, 28%, 7.5rem);
+}
+
+.fns-vc-title {
+  margin: 0 auto 0.85rem;
+  color: var(--vc-paper-ink);
+  font-family: var(--vc-font-title);
+  font-size: clamp(2.4rem, 11vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  text-align: center;
+  text-shadow: none;
+  text-transform: none;
+}
+
+.fns-vc-short-description {
+  margin: 0;
+  color: var(--vc-paper-ink-muted);
+  font-family: var(--vc-font-typewriter);
+  font-size: clamp(0.92rem, 2.1vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.fns-vc-part--1__links {
+  box-sizing: border-box;
+  margin: 0;
+  /* Inherits section right pad (8%) — closer to stain than __copy */
+}
+
+/* Notebook links — typographic list in the stain pad zone */
+.fns-vc-notebook-links {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 0 1.15em;
+  list-style: disc;
+  color: var(--vc-paper-link);
+  font-family: var(--vc-font-body);
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+.fns-vc-notebook-links li {
+  margin: 0 0 0.35rem;
+}
+
+.fns-vc-notebook-links li:last-child {
+  margin-bottom: 0;
+}
+
+.fns-vc-notebook-links li::marker {
+  color: var(--vc-paper-ink-muted);
+}
+
+.fns-vc-notebook-links__link {
+  display: inline;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: var(--vc-paper-link);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+  text-transform: none;
+  transition: color 0.1s ease;
+}
+
+.fns-vc-notebook-links__link:hover,
+.fns-vc-notebook-links__link:focus-visible {
+  color: var(--vc-paper-ink);
+  background: none;
+  box-shadow: none;
+  transform: none;
+  outline: none;
+  text-decoration-thickness: 2px;
+}
+
+.fns-vc-notebook-links__link:focus-visible {
+  outline: 2px solid var(--vc-paper-ink);
+  outline-offset: 3px;
+}
+
+/* ——— L-cut panels (parts 2–4) ——— */
+
+.fns-vc-panel {
+  --vc-panel-bg: var(--vc-navy-bg);
+  --vc-panel-ink: var(--vc-navy-ink);
+  --vc-panel-ink-muted: color-mix(in srgb, var(--vc-panel-ink) 72%, transparent);
+  --color-pixel-fg: var(--vc-panel-ink);
+  --color-pixel-bg: var(--vc-panel-bg);
+
+  position: relative;
+  margin: 0;
+  padding: clamp(1rem, 3.4vw, 1.55rem);
+  border: none;
+  border-radius: 0;
+  background: var(--vc-panel-bg);
+  color: var(--vc-panel-ink);
+  clip-path: var(--pixel-l-cut);
+  -webkit-clip-path: var(--pixel-l-cut);
+  /* Frame = inset ink on clipped plate (corners meet; no CSS border gaps) */
+  box-shadow: inset 0 0 0 var(--pixel-box-frame) var(--vc-panel-ink);
+  filter: none;
+  backdrop-filter: none;
+}
+
+.fns-vc-panel--navy {
+  --vc-panel-bg: var(--vc-navy-bg);
+  --vc-panel-ink: var(--vc-navy-ink);
+}
+
+.fns-vc-panel--lab {
+  --vc-panel-bg: var(--vc-lab-bg);
+  --vc-panel-ink: var(--vc-lab-ink);
+}
+
+.fns-vc-panel--burgundy {
+  --vc-panel-bg: var(--vc-burgundy-bg);
+  --vc-panel-ink: var(--vc-burgundy-ink);
+}
+
+.fns-vc-panel p,
+.fns-vc-panel li,
+.fns-vc-panel a {
+  font-family: var(--vc-font-body);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+}
+
+.fns-vc-panel p {
+  margin: 0 0 0.9rem;
+  font-size: clamp(0.92rem, 2vw, 1.05rem);
+  color: var(--vc-panel-ink);
+}
+
+.fns-vc-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* Part 2 — JAR2 + lead + about + features */
+.fns-vc-illustration {
+  margin: 0 0 1rem;
+}
+
+.fns-vc-illustration img,
+.fns-vc-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0;
+  image-rendering: auto;
+}
+
+.fns-vc-lead {
+  margin: 0 0 1rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--vc-panel-ink);
+  font-family: var(--vc-font-body);
+  font-size: clamp(0.9rem, 2vw, 1.02rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.fns-vc-about {
+  margin: 0 0 0.75rem;
+}
+
+.fns-vc-about strong {
+  font-weight: 700;
+  color: var(--vc-panel-ink);
+}
+
+.fns-vc-features {
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  border: none;
+  background: transparent;
+  list-style: square;
+  color: var(--vc-panel-ink);
+}
+
+.fns-vc-features li {
+  margin-bottom: 0.4rem;
+  font-family: var(--vc-font-body);
+  font-size: clamp(0.88rem, 2vw, 1rem);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.fns-vc-features li:last-child {
+  margin-bottom: 0;
+}
+
+.fns-vc-features li::marker {
+  color: var(--vc-panel-ink);
+}
+
+/* Part 3 — gallery grid */
+.fns-vc-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fns-vc-gallery__item,
+.fns-vc-gallery figure {
+  margin: 0;
+}
+
+.fns-vc-gallery figcaption {
+  display: none;
+}
+
+/* Part 4 — CTA question + hotkey choices */
+.fns-vc-question {
+  margin: 0 0 1rem;
+  color: var(--vc-panel-ink-muted);
+  font-family: var(--vc-font-body);
+  font-size: clamp(1rem, 2.25vw, 1.15rem);
+  font-weight: 400;
+  text-align: center;
+}
+
+.fns-vc-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.72rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fns-vc-choices li {
+  margin: 0;
+}
+
+.fns-vc-choices li::before {
+  content: none;
+}
+
+/*
+ * Choice = OMB selectable + L-cut plate.
+ * Idle: ink + dark outline shadows.
+ * Hover: invert fill/ink + ~0.14em invert outline (outer ::before / inner ::after).
+ */
+.fns-vc-choice {
+  --hotkey-frame: var(--pixel-stroke-hover);
+  --hotkey-frame-press: var(--pixel-stroke-press);
+  --hotkey-step-press: 5px;
+  --pixel-outline-xl:
+    -0.14em -0.14em 0 var(--color-pixel-bg),
+    0.14em -0.14em 0 var(--color-pixel-bg),
+    -0.14em 0.14em 0 var(--color-pixel-bg),
+    0.14em 0.14em 0 var(--color-pixel-bg),
+    0 -0.14em 0 var(--color-pixel-bg),
+    0 0.14em 0 var(--color-pixel-bg),
+    -0.14em 0 0 var(--color-pixel-bg),
+    0.14em 0 0 var(--color-pixel-bg),
+    -0.1em -0.1em 0 var(--color-pixel-bg),
+    0.1em -0.1em 0 var(--color-pixel-bg),
+    -0.1em 0.1em 0 var(--color-pixel-bg),
+    0.1em 0.1em 0 var(--color-pixel-bg),
+    0 -0.1em 0 var(--color-pixel-bg),
+    0 0.1em 0 var(--color-pixel-bg),
+    -0.1em 0 0 var(--color-pixel-bg),
+    0.1em 0 0 var(--color-pixel-bg);
+  --pixel-outline-invert:
+    -0.14em -0.14em 0 var(--color-pixel-fg),
+    0.14em -0.14em 0 var(--color-pixel-fg),
+    -0.14em 0.14em 0 var(--color-pixel-fg),
+    0.14em 0.14em 0 var(--color-pixel-fg),
+    0 -0.14em 0 var(--color-pixel-fg),
+    0 0.14em 0 var(--color-pixel-fg),
+    -0.14em 0 0 var(--color-pixel-fg),
+    0.14em 0 0 var(--color-pixel-fg),
+    -0.1em -0.1em 0 var(--color-pixel-fg),
+    0.1em -0.1em 0 var(--color-pixel-fg),
+    -0.1em 0.1em 0 var(--color-pixel-fg),
+    0.1em 0.1em 0 var(--color-pixel-fg),
+    0 -0.1em 0 var(--color-pixel-fg),
+    0 0.1em 0 var(--color-pixel-fg),
+    -0.1em 0 0 var(--color-pixel-fg),
+    0.1em 0 0 var(--color-pixel-fg);
+  --pixel-outline-invert-press:
+    -0.22em -0.22em 0 var(--color-pixel-fg),
+    0.22em -0.22em 0 var(--color-pixel-fg),
+    -0.22em 0.22em 0 var(--color-pixel-fg),
+    0.22em 0.22em 0 var(--color-pixel-fg),
+    0 -0.22em 0 var(--color-pixel-fg),
+    0 0.22em 0 var(--color-pixel-fg),
+    -0.22em 0 0 var(--color-pixel-fg),
+    0.22em 0 0 var(--color-pixel-fg),
+    -0.16em -0.16em 0 var(--color-pixel-fg),
+    0.16em -0.16em 0 var(--color-pixel-fg),
+    -0.16em 0.16em 0 var(--color-pixel-fg),
+    0.16em 0.16em 0 var(--color-pixel-fg),
+    0 -0.16em 0 var(--color-pixel-fg),
+    0 0.16em 0 var(--color-pixel-fg),
+    -0.16em 0 0 var(--color-pixel-fg),
+    0.16em 0 0 var(--color-pixel-fg),
+    -0.1em -0.1em 0 var(--color-pixel-fg),
+    0.1em -0.1em 0 var(--color-pixel-fg),
+    -0.1em 0.1em 0 var(--color-pixel-fg),
+    0.1em 0.1em 0 var(--color-pixel-fg),
+    0 -0.1em 0 var(--color-pixel-fg),
+    0 0.1em 0 var(--color-pixel-fg),
+    -0.1em 0 0 var(--color-pixel-fg),
+    0.1em 0 0 var(--color-pixel-fg);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-pixel-fg);
+  font-family: var(--vc-font-body);
+  font-size: clamp(1rem, 2.6vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: var(--pixel-outline-xl);
+  text-transform: none;
+  cursor: pointer;
+  transition: none;
+}
+
+.fns-vc-choice::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+  clip-path: var(--pixel-l-cut);
+  -webkit-clip-path: var(--pixel-l-cut);
+  pointer-events: none;
+}
+
+.fns-vc-choice:hover,
+.fns-vc-choice:focus-visible {
+  color: var(--color-pixel-bg);
+  outline: none;
+  text-shadow: var(--pixel-outline-invert);
+}
+
+.fns-vc-choice:hover::before,
+.fns-vc-choice:focus-visible::before {
+  inset: calc(-1 * var(--hotkey-frame));
+  background: var(--color-pixel-fg);
+}
+
+.fns-vc-choice:hover::after,
+.fns-vc-choice:focus-visible::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-pixel-bg);
+  clip-path: var(--pixel-l-cut);
+  -webkit-clip-path: var(--pixel-l-cut);
+  pointer-events: none;
+}
+
+.fns-vc-choice:hover:active,
+.fns-vc-choice:focus-visible:active {
+  --pixel-step: var(--hotkey-step-press);
+  --hotkey-frame: var(--hotkey-frame-press);
+  color: var(--color-pixel-bg);
+  text-shadow: var(--pixel-outline-invert-press);
+}
+
+.fns-vc-choice:visited {
+  color: var(--color-pixel-fg);
+}
+
+.fns-vc-choice:hover:visited,
+.fns-vc-choice:focus-visible:visited {
+  color: var(--color-pixel-bg);
+}
+
+/* Tiny5 keycap digit */
+.fns-vc-choice__key {
+  position: relative;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 1.48em;
+  height: 1.48em;
+  margin: 0;
+  padding: 0.24em;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-pixel-bg);
+  font-family: var(--vc-font-micro);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: none;
+  text-transform: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.fns-vc-choice__key::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-pixel-fg);
+  clip-path: var(--pixel-l-cut);
+  -webkit-clip-path: var(--pixel-l-cut);
+  pointer-events: none;
+}
+
+.fns-vc-choice:hover .fns-vc-choice__key,
+.fns-vc-choice:focus-visible .fns-vc-choice__key {
+  color: var(--color-pixel-fg);
+}
+
+.fns-vc-choice:hover .fns-vc-choice__key::before,
+.fns-vc-choice:focus-visible .fns-vc-choice__key::before {
+  inset: calc(-1 * var(--hotkey-frame));
+  background: var(--color-pixel-fg);
+}
+
+.fns-vc-choice:hover .fns-vc-choice__key::after,
+.fns-vc-choice:focus-visible .fns-vc-choice__key::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-pixel-bg);
+  clip-path: var(--pixel-l-cut);
+  -webkit-clip-path: var(--pixel-l-cut);
+  pointer-events: none;
+}
+
+.fns-vc-choice__label {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--vc-font-body);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.fns-vc-copyright {
+  margin: 0.35rem 0 0;
+  color: var(--vc-copyright);
+  font-family: var(--vc-font-micro);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+@media (max-width: 40rem) {
+  body.fns-vc-theme main {
+    width: min(100%, calc(100% - 0.75rem));
+    gap: 1.1rem;
+  }
+
+  .fns-vc-part--1 {
+    /* Same open-top % column; lower clamp floors for narrow screens */
+    padding: 1.1rem 8% clamp(2.75rem, 16%, 4.25rem) clamp(2.25rem, 20%, 4.5rem);
+    gap: 0.7rem;
+  }
+
+  .fns-vc-part--1__copy {
+    margin-bottom: clamp(3.5rem, 24%, 6rem);
+  }
+
+  .fns-vc-title {
+    margin-bottom: 0.7rem;
+    font-size: clamp(2.1rem, 12vw, 3.2rem);
+  }
+
+  .fns-vc-gallery {
+    gap: 0.5rem;
+  }
+
+  .fns-vc-panel {
+    padding: 0.9rem 0.85rem;
+  }
+
+  .fns-vc-choice {
+    font-size: clamp(0.95rem, 5.5vw, 1.12rem);
+  }
+
+  .fns-vc-copyright {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .fns-vc-gallery {
+    grid-template-columns: 1fr;
+  }
+}

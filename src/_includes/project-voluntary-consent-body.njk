@@ -1,18 +1,151 @@
 {% set vc = i18n[lang].voluntaryConsent %}
-<main>
-  <div class="fns-pixel-frame fns-pixel-frame--hero">
-    <div class="fns-pixel-frame__inner">
-      <section class="fns-adventure" aria-label="{{ vc.ariaLabel }}">
-        <h1>{{ vc.title }}</h1>
-        {% for paragraph in vc.paragraphs %}
-        <p>{{ paragraph }}</p>
-        {% endfor %}
-        <p class="fns-adventure__question">{{ vc.question }}</p>
-        <ul class="fns-adventure__choices">
-          <li><a href="/{{ lang }}/">{{ vc.choices.back }}</a></li>
-        </ul>
-      </section>
-      <p class="fns-copyright">(c) 2023–2026</p>
+<main aria-label="{{ vc.ariaLabel }}">
+  <section class="fns-vc-part fns-vc-part--1">
+    <div class="fns-vc-part--1__copy">
+      <h1 class="fns-vc-title">{{ vc.title }}</h1>
+      <p class="fns-vc-short-description">{{ vc.shortDescription }}</p>
     </div>
-  </div>
+    <div class="fns-vc-part--1__links">
+      <ul class="fns-vc-notebook-links" aria-label="{{ vc.choices.linksAria }}">
+        <li>
+          <a
+            class="fns-vc-notebook-links__link"
+            href="https://store.steampowered.com/app/1296709/"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="{{ vc.choices.storeAria }}"
+          >
+            {{ vc.choices.steam }}
+          </a>
+        </li>
+        <li>
+          <a
+            class="fns-vc-notebook-links__link"
+            href="#vc-screenshot"
+            aria-label="{{ vc.choices.readMoreAria }}"
+          >
+            {{ vc.choices.readMore }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="fns-vc-part fns-vc-part--2">
+    <div class="fns-vc-panel fns-vc-panel--navy">
+      <figure class="fns-vc-illustration" id="vc-screenshot">
+        <img
+          src="/assets/voluntary-consent/hero-jar2-{{ lang }}.webp"
+          width="1600"
+          height="900"
+          alt="{{ vc.images.heroAlt }}"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </figure>
+      <p class="fns-vc-lead">{{ vc.lead }}</p>
+      <p class="fns-vc-about">
+        {%- for seg in vc.aboutSegments -%}
+        {%- if seg.bold %}<strong>{{ seg.text }}</strong>{%- else %}{{ seg.text }}{%- endif -%}
+        {%- endfor -%}
+      </p>
+      <ul class="fns-vc-features">
+        {% for feature in vc.features %}
+        <li>{{ feature }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="fns-vc-part fns-vc-part--3">
+    <div class="fns-vc-panel fns-vc-panel--lab">
+      <div class="fns-vc-gallery">
+        <figure class="fns-vc-gallery__item">
+          <img
+            src="/assets/voluntary-consent/desk-jar0-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.deskAlt }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="fns-vc-gallery__item">
+          <img
+            src="/assets/voluntary-consent/cages-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.cagesAlt }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="fns-vc-gallery__item">
+          <img
+            src="/assets/voluntary-consent/map-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.mapAlt }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="fns-vc-gallery__item">
+          <img
+            src="/assets/voluntary-consent/phone-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.phoneAlt }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="fns-vc-gallery__item">
+          <img
+            src="/assets/voluntary-consent/document-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.documentAlt }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <figure class="fns-vc-gallery__item">
+          <img
+            src="/assets/voluntary-consent/entrance-day-{{ lang }}.webp"
+            width="1600"
+            height="900"
+            alt="{{ vc.images.entranceAlt }}"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="fns-vc-part fns-vc-part--4">
+    <div class="fns-vc-panel fns-vc-panel--burgundy">
+      <p class="fns-vc-question">{{ vc.question }}</p>
+      <div class="fns-vc-choices">
+        <a
+          class="fns-vc-choice"
+          href="https://store.steampowered.com/app/1296709/"
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label="{{ vc.choices.steamAria }}"
+        >
+          <span class="fns-vc-choice__key">1</span>
+          <span class="fns-vc-choice__label">{{ vc.choices.steam }}</span>
+        </a>
+        <a class="fns-vc-choice" href="/{{ lang }}/">
+          <span class="fns-vc-choice__key">2</span>
+          <span class="fns-vc-choice__label">{{ vc.choices.back }}</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <p class="fns-copyright fns-vc-copyright">(c) 2023–2026</p>
 </main>

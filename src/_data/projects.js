@@ -29,6 +29,12 @@ const list = [
     key: "voluntaryConsent",
     namespace: "voluntaryConsent",
     slugs: { ru: "dobrovolnoe-soglasie", en: "voluntary-consent" },
+    pageLdType: "videoGame",
+    bodyClass: "fns-vc-theme",
+    pageStyles: ["/voluntary-consent.css"],
+    pageImage: "/assets/voluntary-consent/og-voluntary-consent.webp",
+    twitterCard: "summary_large_image",
+    disableSky: true,
   },
   {
     key: "lastWarmDay",

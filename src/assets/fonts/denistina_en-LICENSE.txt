@@ -1,0 +1,24 @@
+Copyright 2015 by X-tina (Anastasia Larina). All rights reserved.
+
+Font: Denistina
+Source: https://localfonts.eu/freefonts/handwritten-cyrillic-free-fonts/denistina/
+
+License: Free for PERSONAL and COMMERCIAL use
+(as stated by the publisher on the source page above).
+
+Permissions (as listed on the source page):
+- Private use
+- Commercial use
+- Modification
+- Distribution
+
+Limitations (as listed on the source page):
+- Liability
+- Warranty
+
+Conditions (as listed on the source page):
+- License and copyright notice
+- Same license
+
+This sidecar records the license terms from the cited source for the copy
+shipped as denistina_en.ttf in OMB_assets/output/fonts/.

@@ -70,17 +70,17 @@
     }
   </script>
   {% if pageLdType == "videoGame" %}
-  {% set shLd = i18n[lang].strangeHouse %}
+  {% set gameLd = i18n[lang][pageI18nNamespace] %}
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "VideoGame",
-      "name": "{{ shLd.ld.schemaName | escapeJsonString }}",
-      "description": "{{ shLd.meta.description | escapeJsonString }}",
+      "name": "{{ gameLd.ld.schemaName | escapeJsonString }}",
+      "description": "{{ gameLd.meta.description | escapeJsonString }}",
       "url": "{{ canonicalUrl }}",
-      "inLanguage": "{{ shLd.ld.inLanguage }}",
-      "operatingSystem": "{{ shLd.ld.operatingSystem | escapeJsonString }}",
-      "applicationCategory": "{{ shLd.ld.applicationCategory }}",
+      "inLanguage": "{{ gameLd.ld.inLanguage }}",
+      "operatingSystem": "{{ gameLd.ld.operatingSystem | escapeJsonString }}",
+      "applicationCategory": "{{ gameLd.ld.applicationCategory }}",
       "author": {
         "@type": "Organization",
         "name": "{{ site.name | escapeJsonString }}",
@@ -93,7 +93,7 @@
       },
       "offers": {
         "@type": "Offer",
-        "url": "{{ shLd.ld.offerUrl }}"
+        "url": "{{ gameLd.ld.offerUrl }}"
       }
     }
   </script>

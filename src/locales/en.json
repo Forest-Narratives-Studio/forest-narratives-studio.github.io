@@ -67,16 +67,52 @@
   "voluntaryConsent": {
     "meta": {
       "title": "Voluntary Consent — Forest Narratives Studio",
-      "description": "Voluntary Consent game page. Work in progress."
+      "description": "Your job is something between an autopsy and a survey. In this detective visual novel, you are an interrogation inspector who extracts information from still-living brains. Every day you analyze documents, gather evidence, and make a hard choice: conscience, duty, or the voices in your own head.",
+      "ogImageAlt": "Voluntary Consent — promotional art for the game"
+    },
+    "ld": {
+      "schemaName": "Voluntary Consent",
+      "inLanguage": "en",
+      "operatingSystem": "Windows",
+      "applicationCategory": "GameApplication",
+      "offerUrl": "https://store.steampowered.com/app/1296709/"
     },
     "ariaLabel": "Voluntary Consent project page",
-    "title": "VOLUNTARY CONSENT",
-    "paragraphs": [
-      "This page is a stub for now. Voluntary Consent is currently in development."
+    "title": "Voluntary Consent",
+    "shortDescription": "Your job is something between an autopsy and a survey. In this detective visual novel, you are an interrogation inspector who extracts information from still-living brains. Every day you analyze documents, gather evidence, and make a hard choice: conscience, duty, or the voices in your own head.",
+    "lead": "“An easy little office job somewhere between an autopsy and a survey, friendly coworkers, quiet clients, and funny gadgets. Even a company flat, and not quite on the outskirts. Looks like I've landed on my feet. Now, what should I get for dinner?” — such were the thoughts of our hero, Konstantin Safin, inspector at the Republican Neural Safekeeping Service (RNSS). He had no idea what a sharp turn his snug little life was about to take over the next couple of days.",
+    "aboutSegments": [
+      { "text": "Voluntary Consent", "bold": true },
+      { "text": " is a detective visual novel set in a fictional world full of black humor, synthetic sounds, and 1-bit graphics. In this game we:" }
     ],
+    "features": [
+      "read documents (with our eyes) and minds (with the equipment);",
+      "talk to coworkers, witnesses, and other semi-inanimate objects;",
+      "eat (lunch);",
+      "wander the city at different times of day;",
+      "try not to die (or at least not in the dumbest way possible);",
+      "collect (and quietly destroy) evidence;",
+      "casually make hard choice between our conscience, the code of conduct, and the voices in our heads;",
+      "eat again (dinner) and go to bed on time."
+    ],
+    "images": {
+      "heroAlt": "Voluntary Consent scene: jar specimen and interrogation interface",
+      "deskAlt": "Voluntary Consent scene: inspector's desk",
+      "cagesAlt": "Voluntary Consent scene: cages corridor",
+      "mapAlt": "Voluntary Consent scene: city map",
+      "phoneAlt": "Voluntary Consent scene: phone call",
+      "documentAlt": "Voluntary Consent scene: document on the desk",
+      "entranceAlt": "Voluntary Consent scene: RNSS building entrance by day"
+    },
     "question": "What do you do next?",
     "choices": {
-      "back": "← Back"
+      "steam": "Add to wishlist",
+      "steamAria": "Open Voluntary Consent on Steam (opens in a new tab)",
+      "storeAria": "Open Voluntary Consent on Steam (opens in a new tab)",
+      "readMore": "Read more",
+      "readMoreAria": "Jump to the first screenshot",
+      "linksAria": "Voluntary Consent page links",
+      "back": "Back"
     }
   },
   "forestEngine": {
