@@ -41,7 +41,8 @@ html:has(body.fns-vc-theme) {
 }
 
 body.fns-vc-theme {
-  --vc-page-bg: #121216;
+  /* Initial / part-1 scroll anchor: warm gray-brown paper chrome. JS updates on scroll. */
+  --vc-page-bg: #5a564c;
   --vc-font-title: "Denistina", Georgia, "Times New Roman", serif;
   --vc-font-body: "CozetteVector", "Courier New", Courier, monospace;
   --vc-font-typewriter: "TT2020Base", "Courier New", Courier, monospace;

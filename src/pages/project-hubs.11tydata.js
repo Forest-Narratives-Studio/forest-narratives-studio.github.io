@@ -9,6 +9,7 @@ module.exports = {
     pageLdType: (data) => data.hub && data.hub.pageLdType,
     bodyClass: (data) => data.hub && data.hub.bodyClass,
     pageStyles: (data) => data.hub && data.hub.pageStyles,
+    pageScripts: (data) => data.hub && data.hub.pageScripts,
     pageImage: (data) => data.hub && data.hub.pageImage,
     twitterCard: (data) => data.hub && data.hub.twitterCard,
     disableSky: (data) => data.hub && data.hub.disableSky,

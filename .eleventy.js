@@ -11,6 +11,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/strange-house.css");
   eleventyConfig.addPassthroughCopy("src/voluntary-consent.css");
+  eleventyConfig.addPassthroughCopy("src/voluntary-consent.js");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/assets/backgrounds");
   eleventyConfig.addPassthroughCopy("src/assets/strange-house");

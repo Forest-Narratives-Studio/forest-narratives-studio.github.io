@@ -189,5 +189,10 @@
     })();
   </script>
   {% endif %}
+  {% if pageScripts %}
+    {% for scriptSrc in pageScripts %}
+  <script src="{{ scriptSrc }}" defer></script>
+    {% endfor %}
+  {% endif %}
 </body>
 </html>
