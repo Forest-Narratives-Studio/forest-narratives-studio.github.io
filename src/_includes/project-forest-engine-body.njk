@@ -1,0 +1,18 @@
+{% set fe = i18n[lang].forestEngine %}
+<main>
+  <div class="fns-pixel-frame fns-pixel-frame--hero">
+    <div class="fns-pixel-frame__inner">
+      <section class="fns-adventure" aria-label="{{ fe.ariaLabel }}">
+        <h1>{{ fe.title }}</h1>
+        {% for paragraph in fe.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        <p class="fns-adventure__question">{{ fe.question }}</p>
+        <ul class="fns-adventure__choices">
+          <li><a href="/{{ lang }}/">{{ fe.choices.back }}</a></li>
+        </ul>
+      </section>
+      <p class="fns-copyright">(c) 2023–2026</p>
+    </div>
+  </div>
+</main>

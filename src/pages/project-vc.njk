@@ -1,0 +1,14 @@
+---
+pagination:
+  data: i18n.codes
+  size: 1
+  alias: lang
+permalink: "/{{ lang }}/{{ projects.byKey.voluntaryConsent.slugs[lang] }}/"
+layout: base.njk
+xDefaultPath: "/en/voluntary-consent/"
+ruPath: "/ru/dobrovolnoe-soglasie/"
+enPath: "/en/voluntary-consent/"
+pageI18nNamespace: "voluntaryConsent"
+---
+
+{% include "project-voluntary-consent-body.njk" %}

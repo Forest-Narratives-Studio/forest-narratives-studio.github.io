@@ -1,0 +1,37 @@
+---
+pagination:
+  data: projects.aliases
+  size: 1
+  alias: alias
+permalink: "{{ alias.permalink }}"
+layout: base.njk
+eleventyExcludeFromCollections: true
+robots: "noindex,follow"
+---
+
+{% set stub = i18n[lang].redirectStub %}
+<script>
+  (function () {
+    window.location.replace("{{ alias.targetPath }}");
+  })();
+</script>
+
+<main>
+  <div class="fns-pixel-frame fns-pixel-frame--hero">
+    <div class="fns-pixel-frame__inner">
+      <section class="fns-adventure" aria-label="{{ stub.ariaLabel }}">
+        <p>{{ stub.message }}</p>
+        <p class="fns-adventure__question">{{ stub.question }}</p>
+        <ul class="fns-adventure__choices">
+          <li>
+            <a href="{{ alias.targetPath }}">{{ stub.continue }}</a>
+          </li>
+          <li>
+            <a href="/{{ lang }}/">{{ stub.back }}</a>
+          </li>
+        </ul>
+      </section>
+      <p class="fns-copyright">(c) 2023–2026</p>
+    </div>
+  </div>
+</main>

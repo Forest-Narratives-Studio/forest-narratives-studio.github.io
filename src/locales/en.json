@@ -20,8 +20,20 @@
     "question": "What do you do next?",
     "choices": [
       {
+        "label": "Ask about The Last Warm Day",
+        "href": "/en/last-warm-day/"
+      },
+      {
+        "label": "Ask about Voluntary Consent",
+        "href": "/en/voluntary-consent/"
+      },
+      {
         "label": "Ask about Strange House",
         "href": "/en/strange-house/"
+      },
+      {
+        "label": "Ask about the Fe engine",
+        "href": "/en/forest-engine/"
       },
       {
         "label": "Enter the VK community",
@@ -36,6 +48,51 @@
         "href": "https://max.ru/join/YQzEQSTrjVDh0yNAw5lNeJrT2PIjKEwnPiTQJtTaCIM"
       }
     ]
+  },
+  "lastWarmDay": {
+    "meta": {
+      "title": "The Last Warm Day — Forest Narratives Studio",
+      "description": "The Last Warm Day game page. Work in progress."
+    },
+    "ariaLabel": "The Last Warm Day project page",
+    "title": "THE LAST WARM DAY",
+    "paragraphs": [
+      "This page is a stub for now. The visual novel The Last Warm Day is currently in development."
+    ],
+    "question": "What do you do next?",
+    "choices": {
+      "back": "← Back"
+    }
+  },
+  "voluntaryConsent": {
+    "meta": {
+      "title": "Voluntary Consent — Forest Narratives Studio",
+      "description": "Voluntary Consent game page. Work in progress."
+    },
+    "ariaLabel": "Voluntary Consent project page",
+    "title": "VOLUNTARY CONSENT",
+    "paragraphs": [
+      "This page is a stub for now. Voluntary Consent is currently in development."
+    ],
+    "question": "What do you do next?",
+    "choices": {
+      "back": "← Back"
+    }
+  },
+  "forestEngine": {
+    "meta": {
+      "title": "Fe — Forest Narratives Studio",
+      "description": "Fe (forest-engine) game engine page. Work in progress."
+    },
+    "ariaLabel": "Fe engine project page",
+    "title": "FE",
+    "paragraphs": [
+      "This page is a stub for now. The Fe (forest-engine) game engine is currently in development."
+    ],
+    "question": "What do you do next?",
+    "choices": {
+      "back": "← Back"
+    }
   },
   "strangeHouse": {
     "meta": {
@@ -75,6 +132,17 @@
       "downloadAria": "Download Strange House from RuStore (opens in a new tab)",
       "back": "← Back"
     }
+  },
+  "redirectStub": {
+    "meta": {
+      "title": "Page moved — Forest Narratives Studio",
+      "description": "This address is outdated. Continue to the correct project page."
+    },
+    "ariaLabel": "Redirect notice",
+    "message": "This address mixes language and project slug. The correct page for this language is linked below.",
+    "question": "What do you do next?",
+    "continue": "Open the correct page",
+    "back": "← Back"
   },
   "nav": {
     "ariaLabel": "Language",

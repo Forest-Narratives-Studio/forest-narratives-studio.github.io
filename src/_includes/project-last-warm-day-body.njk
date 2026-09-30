@@ -1,0 +1,18 @@
+{% set lwd = i18n[lang].lastWarmDay %}
+<main>
+  <div class="fns-pixel-frame fns-pixel-frame--hero">
+    <div class="fns-pixel-frame__inner">
+      <section class="fns-adventure" aria-label="{{ lwd.ariaLabel }}">
+        <h1>{{ lwd.title }}</h1>
+        {% for paragraph in lwd.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        <p class="fns-adventure__question">{{ lwd.question }}</p>
+        <ul class="fns-adventure__choices">
+          <li><a href="/{{ lang }}/">{{ lwd.choices.back }}</a></li>
+        </ul>
+      </section>
+      <p class="fns-copyright">(c) 2023–2026</p>
+    </div>
+  </div>
+</main>

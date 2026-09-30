@@ -1,0 +1,23 @@
+---
+pagination:
+  data: projects.hubs
+  size: 1
+  alias: hub
+permalink: "{{ hub.permalink }}"
+layout: base.njk
+eleventyExcludeFromCollections: true
+---
+
+{% set langRedirectRu = hub.redirectRu %}
+{% set langRedirectEn = hub.redirectEn %}
+{% include "lang-redirect.njk" %}
+
+{% if hub.key == "strangeHouse" %}
+{% include "project-strange-house-body.njk" %}
+{% elif hub.key == "voluntaryConsent" %}
+{% include "project-voluntary-consent-body.njk" %}
+{% elif hub.key == "lastWarmDay" %}
+{% include "project-last-warm-day-body.njk" %}
+{% elif hub.key == "forestEngine" %}
+{% include "project-forest-engine-body.njk" %}
+{% endif %}

@@ -1,0 +1,18 @@
+{% set vc = i18n[lang].voluntaryConsent %}
+<main>
+  <div class="fns-pixel-frame fns-pixel-frame--hero">
+    <div class="fns-pixel-frame__inner">
+      <section class="fns-adventure" aria-label="{{ vc.ariaLabel }}">
+        <h1>{{ vc.title }}</h1>
+        {% for paragraph in vc.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        <p class="fns-adventure__question">{{ vc.question }}</p>
+        <ul class="fns-adventure__choices">
+          <li><a href="/{{ lang }}/">{{ vc.choices.back }}</a></li>
+        </ul>
+      </section>
+      <p class="fns-copyright">(c) 2023–2026</p>
+    </div>
+  </div>
+</main>

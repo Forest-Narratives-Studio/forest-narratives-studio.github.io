@@ -1,0 +1,15 @@
+{# Expects langRedirectRu and langRedirectEn (site paths). #}
+<script>
+  (function () {
+    var ru = "{{ langRedirectRu }}";
+    var en = "{{ langRedirectEn }}";
+    var languages = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < languages.length; i += 1) {
+      if (String(languages[i]).toLowerCase().startsWith("ru")) {
+        window.location.replace(ru);
+        return;
+      }
+    }
+    window.location.replace(en);
+  })();
+</script>

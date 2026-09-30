@@ -1,0 +1,14 @@
+---
+pagination:
+  data: i18n.codes
+  size: 1
+  alias: lang
+permalink: "/{{ lang }}/{{ projects.byKey.forestEngine.slugs[lang] }}/"
+layout: base.njk
+xDefaultPath: "/en/forest-engine/"
+ruPath: "/ru/forest-engine/"
+enPath: "/en/forest-engine/"
+pageI18nNamespace: "forestEngine"
+---
+
+{% include "project-forest-engine-body.njk" %}

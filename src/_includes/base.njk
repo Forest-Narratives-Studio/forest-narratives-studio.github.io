@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ metaTitle }}</title>
   <meta name="description" content="{{ metaDescription }}">
-  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="robots" content="{{ robots or 'index,follow,max-image-preview:large' }}">
   <meta name="theme-color" content="#1a1f1a">
   <link rel="canonical" href="{{ canonicalUrl }}">
   <link rel="alternate" hreflang="ru" href="{{ site.url }}{{ ruAlternatePath }}">

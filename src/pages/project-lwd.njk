@@ -1,0 +1,14 @@
+---
+pagination:
+  data: i18n.codes
+  size: 1
+  alias: lang
+permalink: "/{{ lang }}/{{ projects.byKey.lastWarmDay.slugs[lang] }}/"
+layout: base.njk
+xDefaultPath: "/en/last-warm-day/"
+ruPath: "/ru/posledniy-teplyy-den/"
+enPath: "/en/last-warm-day/"
+pageI18nNamespace: "lastWarmDay"
+---
+
+{% include "project-last-warm-day-body.njk" %}
